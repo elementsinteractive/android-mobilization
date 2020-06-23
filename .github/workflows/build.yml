@@ -41,15 +41,19 @@ jobs:
       - name: Build and check
         run: ./gradlew spotlessCheck detektCheck assembleDebug assembleRelease testDebugUnitTest --scan --stacktrace
 
-#      - name: Create release for tags
-#        uses: softprops/action-gh-release@v1
-#        if: startsWith(github.ref, 'refs/tags/v')
-#        with:
-#          draft: true
-#          files: |
-#            app/build/outputs/apk/release/app-release.apk
-#        env:
-#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Publish to Play Store
+        if: github.ref == 'refs/heads/main'
+        run: ./gradlew publish --scan --stacktrace
+
+      - name: Create release for tags
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/v')
+        with:
+          draft: true
+          files: |
+            app/build/outputs/apk/release/app-release.apk
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 #      - name: Clean secrets
 #        if: always()
