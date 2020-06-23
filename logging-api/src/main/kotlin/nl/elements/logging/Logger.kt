@@ -6,8 +6,14 @@ package nl.elements.logging
  */
 interface Logger {
 
+    /**
+     * Sets user identifier
+     */
     fun setUserId(id: String)
 
+    /**
+     * Writes a custom key with given value
+     */
     fun setCustomKey(key: String, value: String)
 
     /** Log a verbose message with optional format args.  */
