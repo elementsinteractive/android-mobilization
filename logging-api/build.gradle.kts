@@ -5,6 +5,7 @@ plugins {
 }
 
 dependencies {
+    implementation(Libs.Kotlin.stdlib)
 }
 
 publishing {
