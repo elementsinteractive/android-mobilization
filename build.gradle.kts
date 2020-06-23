@@ -19,7 +19,6 @@ buildscript {
 plugins {
     id("com.diffplug.gradle.spotless") version Versions.spotless
     id("io.gitlab.arturbosch.detekt") version Versions.detekt
-    `maven-publish` apply false
 }
 
 apply<nl.elements.mobilisation.AndroidMetaModulePlugin>()
@@ -49,21 +48,6 @@ subprojects {
 
         failFast = true
         autoCorrect = false
-    }
-
-    apply(plugin = "maven-publish")
-    configure {
-        repositories {
-            maven {
-                name = "GitHubPackages"
-                url = uri("https://maven.pkg.github.com/elementsinteractive/android-mobilisation")
-            }
-        }
-        publications {
-            register("gpr") {
-                from(components["java"])
-            }
-        }
     }
 }
 
