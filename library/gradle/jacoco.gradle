@@ -1,0 +1,81 @@
+// Jacoco Set-up for test coverage
+// Reference: https://medium.com/@azizbekian/setup-jacoco-sonarqube-in-multimodule-multiflavor-kotlin-android-project-d8e7b27aed36
+
+apply plugin: 'jacoco'
+
+jacoco { toolVersion = "0.8.5" }
+
+tasks.withType(Test) { jacoco.includeNoLocationClasses = true }
+
+project.afterEvaluate {
+
+        def unitTestTask = "testDebugUnitTest"
+
+        tasks.create(name: "${unitTestTask}Coverage", type: JacocoReport, dependsOn: [
+            "$unitTestTask"
+        ]) {
+            group = "Reporting"
+            description = "Generate Jacoco coverage reports"
+
+            reports {
+                html.enabled = true
+                xml.enabled = true
+                csv {
+                    enabled = true
+                    destination = file("$buildDir/reports/jacoco/testDebugUnitTestCoverage/jacoco.csv")
+                }
+            }
+
+            def fileFilter = [
+                '**/android/*',
+                '**/inject/*',
+                '**/R.class',
+                '**/R$*.class',
+                '**/BuildConfig.*',
+                '**/Manifest*.*',
+                '**/*Test*.*',
+                '**/com/example/databinding/*',
+                '**/com/example/generated/callback/*',
+                '**/android/databinding/*',
+                '**/androidx/databinding/*',
+                '**/di/module/*',
+                '**/*MapperImpl*.*',
+                '**/*$ViewInjector*.*',
+                '**/*$ViewBinder*.*',
+                '**/BuildConfig.*',
+                '**/*Component*.*',
+                '**/*BR*.*',
+                '**/Manifest*.*',
+                '**/*$Lambda$*.*',
+                '**/*Companion*.*',
+                '**/*Module.*',
+                '**/*Dagger*.*',
+                '**/*MembersInjector*.*',
+                '**/*_Factory*.*',
+                '**/*_Provide*Factory*.*',
+                '**/*Extensions*.*',
+                '**/*$Result.*', /* filtering `sealed` and `data` classes */
+                '**/*$Result$*.*', /* filtering `sealed` and `data` classes */
+                '**/*Module*',
+            ]
+
+            classDirectories.setFrom(files([
+//                fileTree(dir: "$project.rootDir/base/build/classes/kotlin", excludes: fileFilter),
+            ]))
+
+            def coverageSourceDirs = [
+                "$project.rootDir/library/src/main/kotlin",
+//                "$project.projectDir/src/${variantName}/kotlin"
+            ]
+            additionalSourceDirs.setFrom(files(coverageSourceDirs))
+            sourceDirectories.setFrom(files(coverageSourceDirs))
+
+//            def uiTestsData = fileTree(dir: "${buildDir}/outputs/code_coverage/${variantName}AndroidTest/connected/", includes: ["**/*.ec"])
+
+            executionData(files([
+                "$project.buildDir/jacoco/${unitTestTask}.exec",
+//                uiTestsData,
+            ]))
+        }
+//    }
+}
