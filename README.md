@@ -1,4 +1,5 @@
 ![Platform](https://img.shields.io/badge/platform-Android-blue.svg)
+![CI](https://github.com/elementsinteractive/android-mobilisation/workflows/CI/badge.svg)
 
 Elements Android Mobilisation documentation (Work In Progress)
 ==============================================================
