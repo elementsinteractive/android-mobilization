@@ -39,7 +39,7 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('checksum.txt') }}
 
       - name: Build and check
-        run: ./gradlew spotlessCheck detektCheck assembleDebug assembleRelease testDebug --scan --stacktrace
+        run: ./gradlew spotlessCheck detektCheck assembleDebug assembleRelease testDebugUnitTest --scan --stacktrace
 
 #      - name: Create release for tags
 #        uses: softprops/action-gh-release@v1
