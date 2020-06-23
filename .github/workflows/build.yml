@@ -1,0 +1,87 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      TERM: dumb
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: set up JDK
+        uses: actions/setup-java@v1
+        with:
+          java-version: 8
+
+#      - name: Decrypt secrets
+#        run: ./release/decrypt-secrets.sh
+#        env:
+#          ENCRYPT_KEY: ${{ secrets.ENCRYPT_KEY }}
+
+      - name: Generate cache key
+        run: ./checksum.sh checksum.txt
+
+      - name: Copy CI gradle.properties
+        run: mkdir -p ~/.gradle ; cp .github/ci-gradle.properties ~/.gradle/gradle.properties
+
+      - uses: actions/cache@v1
+        continue-on-error: true # continue if the cache restore/upload fails
+        with:
+          path: ~/.gradle/caches
+          key: ${{ runner.os }}-gradle-${{ hashFiles('checksum.txt') }}
+
+      - name: Build and check
+        run: ./gradlew spotlessCheck detektCheck assembleDebug assembleRelease testDebugUnitTest --scan --stacktrace
+
+      - name: Publish to Play Store
+        if: github.ref == 'refs/heads/main'
+        run: ./gradlew publish --scan --stacktrace
+
+      - name: Create release for tags
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/v')
+        with:
+          draft: true
+          files: |
+            app/build/outputs/apk/release/app-release.apk
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+#      - name: Clean secrets
+#        if: always()
+#        run: ./release/clean-secrets.sh
+
+      - name: Upload build outputs
+        if: always()
+        uses: actions/upload-artifact@v1
+        with:
+          name: build-outputs
+          path: library/build/outputs
+
+      - name: Upload build reports
+        if: always()
+        uses: actions/upload-artifact@v1
+        with:
+          name: build-reports
+          path: library/build/reports
+
+      - name: Copy test results
+        if: always()
+        run: |
+          mkdir -p junit
+          find . -type f -regex ".*/build/test-results/.*xml" -exec cp {} junit/ \;
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v1
+        with:
+          name: junit-results
+          path: junit
