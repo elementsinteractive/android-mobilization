@@ -9,7 +9,7 @@ _Mobilisation_:
 Mobilization, in military terminology, is the act of assembling and readying troops and supplies for war.
 ```
 
-This repository contains a number of libraries and collections of utilities to ready apps at Elements.
+This repository contains a number of libraries and collections of utilities to ready and supplement apps at Elements.
 
 #### Requirements
 
