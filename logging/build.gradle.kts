@@ -22,6 +22,12 @@ android {
     // Library dependencies
     dependencies {
         implementation(Libs.Kotlin.stdlib)
+
+        implementation(Libs.Google.firebaseCrashlytics)
+
+        implementation(Libs.timber)
+
+        implementation(project(":logging-api"))
     }
 
     // Test dependencies

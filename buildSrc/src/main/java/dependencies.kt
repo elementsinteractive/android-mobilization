@@ -36,6 +36,11 @@ object Libs {
         )
     }
 
+    object Google {
+        // Android
+        const val firebaseCrashlytics = "com.google.firebase:firebase-crashlytics:17.0.0"
+    }
+
     object AndroidX {
         object Test {
             private const val version = "1.3.0-beta01"
@@ -65,4 +70,6 @@ object Libs {
             }
         }
     }
+
+    const val timber = "com.jakewharton.timber:timber:4.7.1"
 }
