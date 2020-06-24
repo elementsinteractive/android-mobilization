@@ -67,6 +67,11 @@ afterEvaluate {
             maven {
                 name = "GitHubPackages"
                 url = uri(Mobilization.githubUrl)
+
+                credentials {
+                    username = System.getenv("GITHUB_ACTOR")
+                    password = System.getenv("GITHUB_TOKEN")
+                }
             }
         }
     }
