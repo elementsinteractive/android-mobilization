@@ -12,9 +12,9 @@ publishing {
     publications {
         create<MavenPublication>("gpr") {
             run {
-                groupId = Mobilisation.groupId
-                artifactId = Mobilisation.Artifacts.loggingApi
-                version = Mobilisation.version
+                groupId = Mobilization.groupId
+                artifactId = Mobilization.Artifacts.loggingApi
+                version = Mobilization.version
 
                 from(components["java"])
             }
@@ -24,7 +24,7 @@ publishing {
     repositories {
         maven {
             name = "GitHubPackages"
-            url = uri(Mobilisation.githubUrl)
+            url = uri(Mobilization.githubUrl)
         }
     }
 }

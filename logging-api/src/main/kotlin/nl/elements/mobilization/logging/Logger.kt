@@ -1,4 +1,4 @@
-package nl.elements.logging
+package nl.elements.mobilization.logging
 
 @Suppress("ComplexInterface")
 /**

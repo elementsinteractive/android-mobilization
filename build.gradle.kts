@@ -21,8 +21,8 @@ plugins {
     id("io.gitlab.arturbosch.detekt") version Versions.detekt
 }
 
-apply<nl.elements.mobilisation.AndroidMetaModulePlugin>()
-apply<nl.elements.mobilisation.KotlinMetaModulePlugin>()
+apply<nl.elements.mobilization.AndroidMetaModulePlugin>()
+apply<nl.elements.mobilization.KotlinMetaModulePlugin>()
 
 allprojects {
     repositories {

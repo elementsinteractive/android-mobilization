@@ -1,4 +1,4 @@
-package nl.elements.mobilisation
+package nl.elements.mobilization
 
 import com.android.build.gradle.BaseExtension
 import org.gradle.api.Project

@@ -3,11 +3,9 @@ import Extensions.androidTestImplementations
 plugins {
     id("com.android.library")
     kotlin("android")
-    kotlin("android.extensions")
     kotlin("kapt")
+    id("maven-publish")
 }
-
-apply("gradle/jacoco.gradle")
 
 android {
     defaultConfig {
@@ -40,5 +38,30 @@ android {
         androidTestImplementation(Libs.AndroidX.Test.runner)
 
         androidTestImplementations(Libs.AndroidX.Test.Espresso.dependencies)
+    }
+}
+
+// Because the components are created only during the afterEvaluate phase, you must
+// configure your publications using the afterEvaluate() lifecycle method.
+afterEvaluate {
+    publishing {
+        publications {
+            create<MavenPublication>("gpr") {
+                run {
+                    groupId = Mobilization.groupId
+                    artifactId = Mobilization.Artifacts.loggingApi
+                    version = Mobilization.version
+
+                    artifact("$buildDir/outputs/aar/${Mobilization.Artifacts.logging}-release.aar")
+                }
+            }
+        }
+
+        repositories {
+            maven {
+                name = "GitHubPackages"
+                url = uri(Mobilization.githubUrl)
+            }
+        }
     }
 }
