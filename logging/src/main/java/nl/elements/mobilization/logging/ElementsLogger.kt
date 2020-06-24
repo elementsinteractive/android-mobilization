@@ -12,7 +12,7 @@ import com.google.firebase.crashlytics.FirebaseCrashlytics
 import java.util.regex.Pattern
 import timber.log.Timber
 
-class SkeletonLogger constructor(
+class ElementsLogger constructor(
     private val firebaseCrashlytics: FirebaseCrashlytics
 ) : Logger {
     fun setup(debugMode: Boolean) {
