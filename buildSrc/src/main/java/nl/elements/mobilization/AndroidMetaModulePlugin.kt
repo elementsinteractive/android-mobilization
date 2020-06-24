@@ -1,4 +1,4 @@
-package nl.elements.mobilisation
+package nl.elements.mobilization
 
 import BuildConfig
 import com.android.build.gradle.AppPlugin

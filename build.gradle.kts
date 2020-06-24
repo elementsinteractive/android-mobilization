@@ -21,8 +21,8 @@ plugins {
     id("io.gitlab.arturbosch.detekt") version Versions.detekt
 }
 
-apply<nl.elements.mobilisation.AndroidMetaModulePlugin>()
-apply<nl.elements.mobilisation.KotlinMetaModulePlugin>()
+apply<nl.elements.mobilization.AndroidMetaModulePlugin>()
+apply<nl.elements.mobilization.KotlinMetaModulePlugin>()
 
 allprojects {
     repositories {
@@ -37,6 +37,7 @@ subprojects {
         kotlin {
             target("**/*.kt")
             ktlint(Versions.ktlint)
+            licenseHeaderFile(rootProject.file("spotless/license.kt"))
         }
     }
 
@@ -55,7 +56,8 @@ val detektCheck by tasks.registering(Detekt::class) {
     description = "Runs a failfast detekt build."
     setSource(files(
         "$projectDir/library/src",
-        "$projectDir/logging-api/src"
+        "$projectDir/logging-api/src",
+        "$projectDir/logging/src"
     ))
     config.setFrom("$rootDir/detekt.yml")
 

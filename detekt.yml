@@ -2,6 +2,9 @@ build:
   maxIssues: 0
 
 comments:
+  AbsentOrWrongFileLicense:
+    active: true
+    licenseTemplateFile: 'spotless/license.kt'
   CommentOverPrivateProperty:
     active: true
   UndocumentedPublicClass:
