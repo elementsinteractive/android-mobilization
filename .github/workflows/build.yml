@@ -39,6 +39,8 @@ jobs:
       - name: Publish to Github Packages
         if: github.ref == 'refs/heads/main'
         run: ./gradlew publish --scan --stacktrace
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Create release for tags
         uses: softprops/action-gh-release@v1
