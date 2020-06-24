@@ -10,7 +10,7 @@ plugins {
 android {
     defaultConfig {
         versionCode = 1
-        versionName = "1.0.0"
+        versionName = Mobilization.version
     }
 
     buildTypes {
@@ -49,7 +49,7 @@ afterEvaluate {
             create<MavenPublication>("gpr") {
                 run {
                     groupId = Mobilization.groupId
-                    artifactId = Mobilization.Artifacts.loggingApi
+                    artifactId = Mobilization.Artifacts.logging
                     version = Mobilization.version
 
                     artifact("$buildDir/outputs/aar/${Mobilization.Artifacts.logging}-release.aar")

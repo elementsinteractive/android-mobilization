@@ -12,7 +12,7 @@ apply("gradle/jacoco.gradle")
 android {
     defaultConfig {
         versionCode = 1
-        versionName = "1.0.0"
+        versionName = Mobilization.version
     }
 
     buildTypes {
