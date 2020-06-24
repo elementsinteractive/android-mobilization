@@ -1,4 +1,4 @@
-package nl.elements.mobilisation
+package nl.elements.mobilization
 
 import org.gradle.api.JavaVersion
 import org.gradle.api.Plugin
