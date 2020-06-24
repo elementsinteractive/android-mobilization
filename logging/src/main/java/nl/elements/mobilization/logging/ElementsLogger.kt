@@ -15,11 +15,14 @@ import timber.log.Timber
 class ElementsLogger constructor(
     private val firebaseCrashlytics: FirebaseCrashlytics
 ) : Logger {
-    fun setup(debugMode: Boolean) {
+    fun setup(debugMode: Boolean, logsToCrashlytics: Boolean) {
         if (debugMode) {
             Timber.plant(ReportingDebugTree())
         }
-        Timber.plant(CrashlyticsTree(firebaseCrashlytics))
+
+        if (logsToCrashlytics) {
+            Timber.plant(CrashlyticsTree(firebaseCrashlytics))
+        }
     }
 
     override fun setCustomKey(key: String, value: String) {
