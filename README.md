@@ -1,11 +1,11 @@
 ![Platform](https://img.shields.io/badge/platform-Android-blue.svg)
-![CI](https://github.com/elementsinteractive/android-mobilisation/workflows/CI/badge.svg)
+![CI](https://github.com/elementsinteractive/android-mobilization/workflows/CI/badge.svg)
 
-Elements Android Mobilisation documentation (Work In Progress)
+Elements Android Mobilization documentation (Work In Progress)
 ==============================================================
 
 #### Introduction
-_Mobilisation_:
+_Mobilization_:
 ```
 Mobilization, in military terminology, is the act of assembling and readying troops and supplies for war.
 ```

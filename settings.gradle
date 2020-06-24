@@ -1,4 +1,4 @@
 include ':library'
 include ':logging-api'
 
-rootProject.name = "Elements Template"
+rootProject.name = "Elements Android Mobilization"
