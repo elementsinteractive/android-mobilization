@@ -36,7 +36,7 @@ jobs:
       - name: Build and check
         run: ./gradlew spotlessCheck detektCheck assembleDebug assembleRelease testDebugUnitTest --scan --stacktrace
 
-      - name: Publish to Play Store
+      - name: Publish to Github Packages
         if: github.ref == 'refs/heads/main'
         run: ./gradlew publish --scan --stacktrace
 
