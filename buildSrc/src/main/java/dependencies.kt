@@ -8,11 +8,11 @@ object Versions {
     const val ktlint = "0.34.2"
     const val spotless = "3.30.0"
     const val detekt = "1.8.0"
-    const val mavenPublish = "0.11.1"
 }
 
 object Libs {
     const val androidGradlePlugin = "com.android.tools.build:gradle:4.0.0"
+    const val mavenPublishGradlePlugin = "com.vanniktech:gradle-maven-publish-plugin:0.11.1"
 
     object Kotlin {
         private const val version = "1.3.72"
