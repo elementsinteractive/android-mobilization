@@ -19,7 +19,7 @@ The following artifacts are available:
 | Artifact name | Description  | Dependency |
 |-|-|-|
 | logging-api  | Interface for logging | `implementation 'nl.elements.mobilization:logging-api:VERSION'` |
-| logging  | Actual logging implementation | `implementation 'nl.elements.mobilization:logging-api:VERSION'` |
+| logging  | Actual logging implementation | `implementation 'nl.elements.mobilization:logging:VERSION'` |
 
 #### Development requirements
 
