@@ -37,7 +37,7 @@ jobs:
         run: ./gradlew spotlessCheck detektCheck assembleDebug assembleRelease testDebugUnitTest --scan --stacktrace
 
       - name: Publish to Github Packages
-        if: github.ref == 'refs/heads/main'
+        if: startsWith(github.ref, 'refs/tags/v')
         run: ./gradlew publish --scan --stacktrace
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
