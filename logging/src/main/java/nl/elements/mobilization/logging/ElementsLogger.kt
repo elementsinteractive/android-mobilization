@@ -12,6 +12,9 @@ import com.google.firebase.crashlytics.FirebaseCrashlytics
 import java.util.regex.Pattern
 import timber.log.Timber
 
+/**
+ * Copied & modified from https://github.com/chrisbanes/tivi/
+ */
 class ElementsLogger constructor(
     private val firebaseCrashlytics: FirebaseCrashlytics
 ) : Logger {
@@ -104,6 +107,9 @@ private class ReportingDebugTree : Timber.DebugTree() {
     }
 }
 
+/**
+ * Copied & modified from https://github.com/chrisbanes/tivi/
+ */
 private class CrashlyticsTree(
     private val firebaseCrashlytics: FirebaseCrashlytics
 ) : Timber.Tree() {
