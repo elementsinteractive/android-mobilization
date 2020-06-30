@@ -4,11 +4,17 @@
  * Licensed under the BSD-3 license:
  * https://opensource.org/licenses/BSD-3-Clause
  */
+package nl.elements.mobilization.logging
+
+import android.os.Build
+import android.util.Log
+import com.google.firebase.crashlytics.FirebaseCrashlytics
+import java.util.regex.Pattern
+import timber.log.Timber
 
 /*
  * Original License as derived from https://github.com/chrisbanes/tivi/
  * These classes are copied and partially modified
- *
  * Copyright 2019 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,14 +29,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package nl.elements.mobilization.logging
-
-import android.os.Build
-import android.util.Log
-import com.google.firebase.crashlytics.FirebaseCrashlytics
-import java.util.regex.Pattern
-import timber.log.Timber
-
 class ElementsLogger constructor(
     private val firebaseCrashlytics: FirebaseCrashlytics
 ) : Logger {

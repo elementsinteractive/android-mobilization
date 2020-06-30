@@ -1,11 +1,17 @@
+/*
+ * Copyright 2020 Elements
+ *
+ * Licensed under the BSD-3 license:
+ * https://opensource.org/licenses/BSD-3-Clause
+ */
 package nl.elements.mobilization.logging.test
 
 import io.mockk.mockk
+import kotlin.test.assertEquals
 import nl.elements.mobilization.logging.ElementsLogger
 import org.junit.Before
 import org.junit.Test
 import timber.log.Timber
-import kotlin.test.assertEquals
 
 class ElementsLoggerTest {
 
