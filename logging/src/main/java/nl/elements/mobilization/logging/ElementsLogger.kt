@@ -4,6 +4,25 @@
  * Licensed under the BSD-3 license:
  * https://opensource.org/licenses/BSD-3-Clause
  */
+
+/*
+ * Original License as derived from https://github.com/chrisbanes/tivi/
+ * These classes are copied and partially modified
+ *
+ * Copyright 2019 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package nl.elements.mobilization.logging
 
 import android.os.Build
@@ -12,9 +31,6 @@ import com.google.firebase.crashlytics.FirebaseCrashlytics
 import java.util.regex.Pattern
 import timber.log.Timber
 
-/**
- * Copied & modified from https://github.com/chrisbanes/tivi/
- */
 class ElementsLogger constructor(
     private val firebaseCrashlytics: FirebaseCrashlytics
 ) : Logger {
@@ -77,6 +93,8 @@ class ElementsLogger constructor(
 /**
  * Special version of [Timber.DebugTree] which is tailored for Timber being wrapped
  * within another class.
+ *
+ * Copied & modified from https://github.com/chrisbanes/tivi/
  */
 private class ReportingDebugTree : Timber.DebugTree() {
     override fun log(priority: Int, tag: String?, message: String, t: Throwable?) {
