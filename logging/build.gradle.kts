@@ -9,6 +9,10 @@ plugins {
 
 android {
     buildTypes {
+        getByName("debug") {
+            isTestCoverageEnabled = true
+        }
+
         getByName("release") {
             isMinifyEnabled = false
         }

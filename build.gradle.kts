@@ -24,7 +24,7 @@ plugins {
 
 apply<nl.elements.mobilization.AndroidMetaModulePlugin>()
 apply<nl.elements.mobilization.KotlinMetaModulePlugin>()
-apply<nl.elements.mobilization.JacocoSubprojectPlugin>()
+apply<nl.elements.mobilization.JacocoMetaModulePlugin>()
 
 allprojects {
     repositories {
