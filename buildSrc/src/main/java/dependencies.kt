@@ -8,6 +8,7 @@ object Versions {
     const val ktlint = "0.34.2"
     const val spotless = "3.30.0"
     const val detekt = "1.8.0"
+    const val jacoco = "0.8.5"
 }
 
 object Libs {
