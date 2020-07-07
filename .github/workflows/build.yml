@@ -34,7 +34,7 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('checksum.txt') }}
 
       - name: Build and check
-        run: ./gradlew spotlessCheck detektCheck assembleDebug assembleRelease testDebugUnitTest --scan --stacktrace
+        run: ./gradlew spotlessCheck detektCheck assembleDebug assembleRelease testDebugUnitTest jacocoTestReport --scan --stacktrace
 
       - name: Publish to Github Packages
         if: startsWith(github.ref, 'refs/tags/v')
