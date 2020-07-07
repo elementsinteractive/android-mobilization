@@ -34,7 +34,7 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('checksum.txt') }}
 
       - name: Build and check
-        run: ./gradlew spotlessCheck detektCheck assembleDebug assembleRelease testDebugUnitTest jacocoTestReport mergeJacocoReports jacocoTestReportMerged --scan --stacktrace
+        run: ./gradlew clean spotlessCheck detektCheck assembleDebug assembleRelease testDebugUnitTest jacocoTestReport mergeJacocoReports jacocoTestReportMerged --scan --stacktrace
 
       - name: Upload test coverage to codecov
         run: bash <(curl -s https://codecov.io/bash)
