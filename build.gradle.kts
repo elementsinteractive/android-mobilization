@@ -20,6 +20,8 @@ buildscript {
 plugins {
     id("com.diffplug.gradle.spotless") version Versions.spotless
     id("io.gitlab.arturbosch.detekt") version Versions.detekt
+
+    id("com.vanniktech.android.junit.jacoco") version "0.16.0"
 }
 
 allprojects {
@@ -47,7 +49,6 @@ subprojects {
 
         failFast = true
         autoCorrect = false
-    }
 }
 
 val detektCheck by tasks.registering(Detekt::class) {
@@ -68,4 +69,9 @@ val detektCheck by tasks.registering(Detekt::class) {
 
 apply<nl.elements.mobilization.AndroidMetaModulePlugin>()
 apply<nl.elements.mobilization.KotlinMetaModulePlugin>()
-apply<nl.elements.mobilization.JacocoMetaModulePlugin>()
+
+junitJacoco {
+    jacocoVersion = "0.8.5"
+    includeNoLocationClasses = false
+    includeInstrumentationCoverageInMergedReport = false
+}
