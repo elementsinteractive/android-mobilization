@@ -2,7 +2,6 @@ package nl.elements.mobilization.interactor.test
 
 import kotlinx.coroutines.TimeoutCancellationException
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.take
@@ -11,7 +10,6 @@ import kotlinx.coroutines.withContext
 import nl.elements.mobilization.interactor.Interactor
 import nl.elements.mobilization.interactor.InvokeError
 import nl.elements.mobilization.interactor.InvokeStarted
-import nl.elements.mobilization.interactor.InvokeStatus
 import nl.elements.mobilization.interactor.InvokeSuccess
 import nl.elements.mobilization.interactor.invoke
 import nl.elements.mobilization.shared.test.TestCoroutineRule
@@ -25,7 +23,7 @@ class InteractorTest {
     val testRule = TestCoroutineRule()
 
     @Test
-    fun `Invoke an Interactor and retrieve status`() {
+    fun `invoke()  an Interactor - without params - emits InvokeStarted & InvokeSuccess only`() {
         val testInteractor = object : Interactor<Unit>() {
             override suspend fun doWork(params: Unit) {
                 withContext(testRule.dispatcher) {
@@ -36,13 +34,18 @@ class InteractorTest {
 
         testRule.dispatcher.runBlockingTest {
             testInteractor.invoke()
-                .take(3)
+                .take(2)
+                .onEach {
+                    assertTrue {
+                        it is InvokeStarted || it is InvokeSuccess
+                    }
+                }
                 .launchIn(this)
         }
     }
 
     @Test
-    fun `Invoke an Interactor with timeout results in error`() {
+    fun `invoke() an Interactor  - with a timeout - results in an InvokeError with TimeoutCancellationException`() {
         val testInteractor = object : Interactor<Unit>() {
             override suspend fun doWork(params: Unit) {
                 withContext(testRule.dispatcher) {
@@ -57,6 +60,10 @@ class InteractorTest {
                 .onEach { status ->
                     if (status is InvokeStarted) {
                         advanceTimeBy(550)
+                    } else if (status is InvokeError) {
+                        assertTrue {
+                            status.throwable is TimeoutCancellationException
+                        }
                     }
                 }
                 .launchIn(this)
