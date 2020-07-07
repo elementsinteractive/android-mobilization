@@ -53,19 +53,19 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Upload build outputs
-        if: always()
-        uses: actions/upload-artifact@v1
-        with:
-          name: build-outputs
-          path: library/build/outputs
-
-      - name: Upload build reports
-        if: always()
-        uses: actions/upload-artifact@v1
-        with:
-          name: build-reports
-          path: library/build/reports
+#      - name: Upload build outputs
+#        if: always()
+#        uses: actions/upload-artifact@v1
+#        with:
+#          name: build-outputs
+#          path: library/build/outputs
+#
+#      - name: Upload build reports
+#        if: always()
+#        uses: actions/upload-artifact@v1
+#        with:
+#          name: build-reports
+#          path: library/build/reports
 
       - name: Copy test results
         if: always()

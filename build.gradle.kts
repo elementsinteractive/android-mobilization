@@ -22,10 +22,6 @@ plugins {
     id("io.gitlab.arturbosch.detekt") version Versions.detekt
 }
 
-apply<nl.elements.mobilization.AndroidMetaModulePlugin>()
-apply<nl.elements.mobilization.KotlinMetaModulePlugin>()
-apply<nl.elements.mobilization.JacocoMetaModulePlugin>()
-
 allprojects {
     repositories {
         google()
@@ -69,3 +65,7 @@ val detektCheck by tasks.registering(Detekt::class) {
     exclude(".*/tmp/.*")
     exclude(".*/res/.*")
 }
+
+apply<nl.elements.mobilization.AndroidMetaModulePlugin>()
+apply<nl.elements.mobilization.KotlinMetaModulePlugin>()
+apply<nl.elements.mobilization.JacocoMetaModulePlugin>()
