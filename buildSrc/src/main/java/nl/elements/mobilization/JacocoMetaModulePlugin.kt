@@ -4,6 +4,7 @@ import Versions
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.apply
+import org.gradle.kotlin.dsl.create
 import org.gradle.kotlin.dsl.getByName
 import org.gradle.kotlin.dsl.invoke
 import org.gradle.kotlin.dsl.withType
@@ -16,6 +17,8 @@ class JacocoMetaModulePlugin : Plugin<Project> {
         target.subprojects {
             apply<JacocoSubprojectPlugin>()
         }
+
+
     }
 }
 
@@ -28,7 +31,7 @@ class JacocoSubprojectPlugin : Plugin<Project> {
                 toolVersion = Versions.jacoco
             }
 
-            tasks.withType<JacocoReport> {
+            tasks.create<JacocoReport>("jacocoCodeCoverageReport") {
                 reports {
                     xml.isEnabled = true
                     html.isEnabled = true
