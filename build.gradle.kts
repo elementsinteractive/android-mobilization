@@ -49,9 +49,10 @@ subprojects {
 
         failFast = true
         autoCorrect = false
+    }
 }
 
-val detektCheck by tasks.registering(Detekt::class) {
+tasks.create<Detekt>("detektCheck") {
     description = "Runs a failfast detekt build."
     setSource(files(
         "$projectDir/logging-api/src",
