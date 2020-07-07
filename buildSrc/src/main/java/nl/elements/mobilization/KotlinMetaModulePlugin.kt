@@ -18,6 +18,12 @@ class KotlinMetaModulePlugin : Plugin<Project> {
 
                     // Treat all Kotlin warnings as errors
                     allWarningsAsErrors = true
+
+                    // Enable experimental coroutines APIs, including Flow
+                    freeCompilerArgs += listOf(
+                        "-Xuse-experimental=kotlinx.coroutines.ExperimentalCoroutinesApi",
+                        "-Xuse-experimental=kotlinx.coroutines.FlowPreview"
+                    )
                 }
             }
 
