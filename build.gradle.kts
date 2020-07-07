@@ -57,7 +57,6 @@ subprojects {
 val detektCheck by tasks.registering(Detekt::class) {
     description = "Runs a failfast detekt build."
     setSource(files(
-        "$projectDir/library/src",
         "$projectDir/logging-api/src",
         "$projectDir/logging/src"
     ))
