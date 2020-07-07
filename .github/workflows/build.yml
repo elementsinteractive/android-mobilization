@@ -36,6 +36,9 @@ jobs:
       - name: Build and check
         run: ./gradlew spotlessCheck detektCheck assembleDebug assembleRelease testDebugUnitTest jacocoTestReport --scan --stacktrace
 
+      - name: Upload test coverage to codecov
+        run: bash <(curl -s https://codecov.io/bash)
+
       - name: Publish to Github Packages
         if: startsWith(github.ref, 'refs/tags/v')
         run: ./gradlew uploadArchives --no-daemon --no-parallel --scan --stacktrace
