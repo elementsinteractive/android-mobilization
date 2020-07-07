@@ -26,7 +26,7 @@ android {
 
         implementation(Libs.timber)
 
-        implementation(project(":logging-api"))
+        api(project(":logging-api"))
     }
 
     // Test dependencies
