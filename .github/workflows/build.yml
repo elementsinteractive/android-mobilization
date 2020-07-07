@@ -34,7 +34,7 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('checksum.txt') }}
 
       - name: Build and check
-        run: ./gradlew spotlessCheck detektCheck assembleDebug assembleRelease testDebugUnitTest jacocoCodeCoverageReport --scan --stacktrace
+        run: ./gradlew spotlessCheck detektCheck assembleDebug assembleRelease testDebugUnitTest jacocoTestCoverageReport --scan --stacktrace
 
       - name: Upload test coverage to codecov
         run: bash <(curl -s https://codecov.io/bash)
@@ -53,19 +53,12 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-#      - name: Upload build outputs
-#        if: always()
-#        uses: actions/upload-artifact@v1
-#        with:
-#          name: build-outputs
-#          path: library/build/outputs
-#
-#      - name: Upload build reports
-#        if: always()
-#        uses: actions/upload-artifact@v1
-#        with:
-#          name: build-reports
-#          path: library/build/reports
+      - name: Upload build reports
+        if: always()
+        uses: actions/upload-artifact@v1
+        with:
+          name: build-reports
+          path: build/reports
 
       - name: Copy test results
         if: always()
