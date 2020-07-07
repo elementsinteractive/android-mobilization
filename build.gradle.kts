@@ -74,5 +74,31 @@ apply<nl.elements.mobilization.KotlinMetaModulePlugin>()
 junitJacoco {
     jacocoVersion = "0.8.5"
     includeNoLocationClasses = false
-    includeInstrumentationCoverageInMergedReport = false
+    excludes = listOf(
+        "**/android/*",
+        "**/inject/*",
+        "**/R.class",
+        "**/R$*.class",
+        "**/BuildConfig.*",
+        "**/Manifest*.*",
+        "**/*Test*.*",
+        "**/android/databinding/*",
+        "**/androidx/databinding/*",
+        "**/*MapperImpl*.*",
+        "**/*\$ViewInjector*.*",
+        "**/*\$ViewBinder*.*",
+        "**/BuildConfig.*",
+        "**/*Component*.*",
+        "**/*BR*.*",
+        "**/*\$Lambda$*.*",
+        "**/*Companion*.*",
+        "**/*Module.*",
+        "**/*Dagger*.*",
+        "**/*_Factory*.*",
+        "**/*_Provide*Factory*.*",
+        "**/*Extensions*.*",
+        "**/*\$Result.*", /* filtering `sealed` and `data` classes */
+        "**/*\$Result$*.*", /* filtering `sealed` and `data` classes */
+        "**/*Module*"
+    )
 }
