@@ -1,4 +1,5 @@
 include ':logging-api'
 include ':logging'
+include ':interactor'
 
 rootProject.name = "Elements Android Mobilization"

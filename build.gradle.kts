@@ -55,6 +55,7 @@ subprojects {
 tasks.create<Detekt>("detektCheck") {
     description = "Runs a failfast detekt build."
     setSource(files(
+        "$projectDir/interactor/src",
         "$projectDir/logging-api/src",
         "$projectDir/logging/src"
     ))

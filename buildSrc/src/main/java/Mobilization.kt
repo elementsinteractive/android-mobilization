@@ -6,5 +6,6 @@ object Mobilization {
     object Artifacts {
         const val loggingApi = "logging-api"
         const val logging = "logging"
+        const val interactor = "interactor"
     }
 }
