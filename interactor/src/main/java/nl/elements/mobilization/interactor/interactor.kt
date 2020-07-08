@@ -4,6 +4,25 @@
  * Licensed under the BSD-3 license:
  * https://opensource.org/licenses/BSD-3-Clause
  */
+
+/*
+ * Original License as derived from https://github.com/chrisbanes/tivi/
+ * These classes are copied and partially modified
+ *
+ * Copyright 2019 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package nl.elements.mobilization.interactor
 
 import java.util.concurrent.TimeUnit
@@ -15,6 +34,11 @@ import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.withTimeout
+
+/**
+ * These classes are derived from & modified from https://github.com/chrisbanes/tivi/
+ * Tests were added to ensure their correctness
+ */
 
 /**
  * Base interactor class to be used for work without a specific result.
