@@ -4,6 +4,17 @@
  * Licensed under the BSD-3 license:
  * https://opensource.org/licenses/BSD-3-Clause
  */
+package nl.elements.mobilization.interactor
+
+import java.util.concurrent.TimeUnit
+import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.receiveAsFlow
+import kotlinx.coroutines.withTimeout
 
 /*
  * Original License as derived from https://github.com/chrisbanes/tivi/
@@ -23,17 +34,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package nl.elements.mobilization.interactor
-
-import java.util.concurrent.TimeUnit
-import kotlinx.coroutines.channels.Channel
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.distinctUntilChanged
-import kotlinx.coroutines.flow.flatMapLatest
-import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.receiveAsFlow
-import kotlinx.coroutines.withTimeout
 
 /**
  * These classes are derived from & modified from https://github.com/chrisbanes/tivi/
