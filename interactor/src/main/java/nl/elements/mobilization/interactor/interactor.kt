@@ -1,22 +1,19 @@
+/*
+ * Copyright 2020 Elements
+ *
+ * Licensed under the BSD-3 license:
+ * https://opensource.org/licenses/BSD-3-Clause
+ */
 package nl.elements.mobilization.interactor
 
 import java.util.concurrent.TimeUnit
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.TimeoutCancellationException
 import kotlinx.coroutines.channels.Channel
-import kotlinx.coroutines.channels.ConflatedBroadcastChannel
-import kotlinx.coroutines.channels.sendBlocking
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.asFlow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.receiveAsFlow
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import kotlinx.coroutines.withTimeout
 
 /**
@@ -145,3 +142,4 @@ abstract class SubjectInteractor<P : Any, T> {
 // Handy extensions functions for interactors with Unit params
 operator fun Interactor<Unit>.invoke() = invoke(Unit)
 operator fun <T> SubjectInteractor<Unit, T>.invoke() = invoke(Unit)
+operator fun <T> ResultInteractor<Unit, T>.invoke() = invoke(Unit)

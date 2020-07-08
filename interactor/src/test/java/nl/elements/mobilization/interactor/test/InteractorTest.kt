@@ -1,5 +1,12 @@
+/*
+ * Copyright 2020 Elements
+ *
+ * Licensed under the BSD-3 license:
+ * https://opensource.org/licenses/BSD-3-Clause
+ */
 package nl.elements.mobilization.interactor.test
 
+import kotlin.test.assertTrue
 import kotlinx.coroutines.TimeoutCancellationException
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.launchIn
@@ -15,7 +22,6 @@ import nl.elements.mobilization.interactor.invoke
 import nl.elements.mobilization.shared.test.TestCoroutineRule
 import org.junit.Rule
 import org.junit.Test
-import kotlin.test.assertTrue
 
 class InteractorTest {
 
@@ -27,7 +33,6 @@ class InteractorTest {
         val testInteractor = object : Interactor<Unit>() {
             override suspend fun doWork(params: Unit) {
                 withContext(testRule.dispatcher) {
-
                 }
             }
         }

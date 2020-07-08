@@ -1,5 +1,12 @@
+/*
+ * Copyright 2020 Elements
+ *
+ * Licensed under the BSD-3 license:
+ * https://opensource.org/licenses/BSD-3-Clause
+ */
 package nl.elements.mobilization.interactor.test
 
+import kotlin.test.assertTrue
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.take
 import kotlinx.coroutines.launch
@@ -8,7 +15,6 @@ import kotlinx.coroutines.withContext
 import nl.elements.mobilization.interactor.SuspendingWorkInteractor
 import nl.elements.mobilization.shared.test.TestCoroutineRule
 import org.junit.Rule
-import kotlin.test.assertTrue
 
 class SuspendingWorkInteractorTest {
     @get:Rule
