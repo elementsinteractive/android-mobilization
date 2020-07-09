@@ -24,7 +24,7 @@ class SubjectInteractorTest {
     val testRule = TestCoroutineRule()
 
     @Test
-    fun `invoke() a SubjectInteractor - with params - returns a result`() {
+    fun `invoke() a SubjectInteractor - with params - Returns a result in the observe stream`() {
         val result = "Elements"
 
         val testSubjectInteractor = object : SubjectInteractor<Unit, String>() {

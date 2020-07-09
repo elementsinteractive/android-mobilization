@@ -21,7 +21,7 @@ class SuspendingWorkInteractorTest {
     @get:Rule
     val testRule = TestCoroutineRule()
 
-    fun `SuspendingWorkInteractor - When invoked - Returns result in observe`() {
+    fun `invoke() a SuspendingWorkInteractor - with params - Returns result in observe stream`() {
         val result = "Elements"
 
         val testSuspendingWorkInteractor = object : SuspendingWorkInteractor<Unit, String>() {
