@@ -6,6 +6,8 @@ plugins {
 
 dependencies {
     implementation(Libs.Kotlin.stdlib)
+
+    implementation(Libs.Coroutines.core)
 }
 
 // Test dependencies

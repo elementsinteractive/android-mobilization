@@ -12,7 +12,9 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 class KotlinMetaModulePlugin : Plugin<Project> {
     override fun apply(project: Project) {
         project.subprojects {
-            tasks.withType<KotlinCompile> {
+            println("Adding to project: $name")
+
+            tasks.withType<KotlinCompile>().all {
                 kotlinOptions {
                     jvmTarget = JavaVersion.VERSION_1_8.toString()
 
@@ -20,9 +22,10 @@ class KotlinMetaModulePlugin : Plugin<Project> {
                     allWarningsAsErrors = true
 
                     // Enable experimental coroutines APIs, including Flow
-                    freeCompilerArgs += listOf(
-                        "-Xuse-experimental=kotlinx.coroutines.ExperimentalCoroutinesApi",
-                        "-Xuse-experimental=kotlinx.coroutines.FlowPreview"
+                    freeCompilerArgs = freeCompilerArgs + listOf(
+                        "-Xopt-in=kotlinx.coroutines.ExperimentalCoroutinesApi",
+                        "-Xopt-in=kotlinx.coroutines.FlowPreview",
+                        "-Xopt-in=kotlin.Experimental"
                     )
                 }
             }
