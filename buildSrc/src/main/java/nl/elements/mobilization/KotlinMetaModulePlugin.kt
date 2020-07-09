@@ -12,8 +12,6 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 class KotlinMetaModulePlugin : Plugin<Project> {
     override fun apply(project: Project) {
         project.subprojects {
-            println("Adding to project: $name")
-
             tasks.withType<KotlinCompile>().all {
                 kotlinOptions {
                     jvmTarget = JavaVersion.VERSION_1_8.toString()
