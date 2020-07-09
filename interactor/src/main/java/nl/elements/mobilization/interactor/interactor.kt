@@ -35,7 +35,8 @@ import kotlinx.coroutines.withTimeout
  */
 
 /**
- * These classes are derived from & modified from https://github.com/chrisbanes/tivi/
+ * These classes are derived & modified from https://github.com/chrisbanes/tivi/
+ * Comments were added to describe their use-cases
  * Tests were added to ensure their correctness
  */
 

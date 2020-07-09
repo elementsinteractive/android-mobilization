@@ -20,6 +20,7 @@ The following artifacts are available:
 |-|-|-|
 | logging-api  | Interface for logging | `implementation 'nl.elements.mobilization:logging-api:VERSION'` |
 | logging  | Actual logging implementation | `implementation 'nl.elements.mobilization:logging:VERSION'` |
+| interactor  | Domain interactors to define use cases | `implementation 'nl.elements.mobilization:interactor:VERSION'` |
 
 #### Development requirements
 
