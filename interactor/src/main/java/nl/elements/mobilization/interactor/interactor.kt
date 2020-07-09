@@ -9,8 +9,10 @@ package nl.elements.mobilization.interactor
 import java.util.concurrent.TimeUnit
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.receiveAsFlow
@@ -149,18 +151,18 @@ abstract class SuspendingWorkInteractor<P : Any, T : Any> : SubjectInteractor<P,
  * ```
  */
 abstract class SubjectInteractor<P : Any, T> {
-    private val channel = Channel<P>(Channel.CONFLATED)
+    private val paramState = MutableStateFlow<P?>(null)
 
-    operator fun invoke(params: P) = channel.offer(params)
+    operator fun invoke(params: P) {
+        paramState.value = params
+    }
 
     /**
      * The observable work to be returned
      */
     protected abstract fun createObservable(params: P): Flow<T>
 
-    fun observe(): Flow<T> = channel.receiveAsFlow()
-        .distinctUntilChanged()
-        .flatMapLatest { createObservable(it) }
+    fun observe(): Flow<T> = paramState.filterNotNull().flatMapLatest { createObservable(it) }
 }
 
 // Handy extensions functions for interactors with Unit params
