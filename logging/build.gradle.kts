@@ -32,6 +32,7 @@ android {
         testImplementation(Libs.Kotlin.testJunit)
         testImplementation(Libs.Coroutines.test)
         testImplementation(Libs.AndroidX.Test.core)
+        testImplementation(Libs.mockk)
 
         androidTestImplementation(Libs.AndroidX.Test.junit)
         androidTestImplementation(Libs.AndroidX.Test.junitKtx)

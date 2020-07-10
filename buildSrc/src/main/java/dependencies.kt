@@ -73,4 +73,6 @@ object Libs {
     }
 
     const val timber = "com.jakewharton.timber:timber:4.7.1"
+
+    const val mockk = "io.mockk:mockk:1.9.3"
 }
