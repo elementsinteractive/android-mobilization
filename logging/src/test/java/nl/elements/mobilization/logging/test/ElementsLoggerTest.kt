@@ -23,23 +23,35 @@ class ElementsLoggerTest {
     }
 
     @Test
-    fun `ElementsLogger does not plant any tree when not requested`() {
+    fun `setup() - when not requested - does not plant any trees`() {
+        // Given the [ElementsLogger]
+
+        // When setup
         logger.setup(debugMode = false, logsToCrashlytics = false)
 
+        // Then there are no trees
         assertEquals(0, Timber.treeCount())
     }
 
     @Test
-    fun `ElementsLogger plants DebugTree when requested`() {
+    fun `setup() - when requested - plants a DebugTree`() {
+        // Given the [ElementsLogger]
+
+        // When setup with at least debug mode
         logger.setup(debugMode = true, logsToCrashlytics = false)
 
+        // Then there is at least 1 tree
         assertEquals(1, Timber.treeCount())
     }
 
     @Test
-    fun `ElementsLogger plants CrashlyticsTree when requested`() {
+    fun `setup() - when requested - plants a CrashlyticsTree`() {
+        // Given the [ElementsLogger]
+
+        // When setup with crashlytics
         logger.setup(debugMode = false, logsToCrashlytics = true)
 
+        // Then there is at least 1 tree
         assertEquals(1, Timber.treeCount())
     }
 }
