@@ -36,8 +36,11 @@ jobs:
       - name: Build and check
         run: ./gradlew spotlessCheck detektCheck assembleDebug --stacktrace
 
-      - name: Run unit tests and Code Coverage reports
-        run: ./gradlew testDebugUnitTest jacocoTestReport mergeJacocoReports jacocoTestReportMerged
+      - name: Run unit tests
+        run: ./gradlew testDebugUnitTest
+
+      - name: Run code coverage
+        run: ./gradlew jacocoTestReport mergeJacocoReports jacocoTestReportMerged
 
       - name: Upload code coverage to codecov
         run: bash <(curl -s https://codecov.io/bash)
