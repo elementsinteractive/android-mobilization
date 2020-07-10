@@ -41,7 +41,7 @@ jobs:
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
-      - name: Publish to Github Packages
+      - name: Publish to Maven Central
         if: startsWith(github.ref, 'refs/tags/v')
         run: ./gradlew assembleRelease uploadArchives --no-daemon --no-parallel --scan --stacktrace
         env:
