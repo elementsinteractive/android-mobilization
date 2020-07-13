@@ -7,7 +7,7 @@ plugins {
 dependencies {
     implementation(Libs.Kotlin.stdlib)
 
-    api(Libs.Coroutines.core)
+    implementation(Libs.Coroutines.core)
 }
 
 // Test dependencies
@@ -15,6 +15,9 @@ dependencies {
     testImplementation(Libs.Kotlin.stdlib)
     testImplementation(Libs.Kotlin.test)
     testImplementation(Libs.Kotlin.testJunit)
+    testImplementation(Libs.Coroutines.test)
+
+    testImplementation(project(":shared:commonTest"))
 }
 
 publishing {
@@ -22,7 +25,7 @@ publishing {
         create<MavenPublication>("gpr") {
             run {
                 groupId = Mobilization.groupId
-                artifactId = Mobilization.Artifacts.loggingApi
+                artifactId = Mobilization.Artifacts.interactor
                 version = Mobilization.version
 
                 from(components["java"])

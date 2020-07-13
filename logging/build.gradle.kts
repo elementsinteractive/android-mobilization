@@ -22,6 +22,8 @@ android {
     dependencies {
         implementation(Libs.Kotlin.stdlib)
 
+        api(Libs.Coroutines.core)
+
         implementation(Libs.Google.firebaseCrashlytics)
 
         implementation(Libs.timber)
