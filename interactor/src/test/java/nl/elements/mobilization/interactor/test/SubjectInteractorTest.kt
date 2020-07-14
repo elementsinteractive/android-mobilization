@@ -14,6 +14,7 @@ import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.take
 import kotlinx.coroutines.test.runBlockingTest
 import nl.elements.mobilization.interactor.SubjectInteractor
+import nl.elements.mobilization.interactor.invoke
 import nl.elements.mobilization.shared.test.TestCoroutineRule
 import org.junit.Rule
 import org.junit.Test
@@ -41,7 +42,7 @@ class SubjectInteractorTest {
                 }
                 .launchIn(this)
 
-            testSubjectInteractor(Unit)
+            testSubjectInteractor()
         }
     }
 }
