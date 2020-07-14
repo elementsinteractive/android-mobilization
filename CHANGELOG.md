@@ -14,6 +14,8 @@ Types of changes:
 
 ## [Unreleased]
 
+## [0.2.0] - 2020-07-14
+
 ### Added
 
 - [Interactor](./interactor) module with use case examples. Includes a base Interactor, ResultInteractor, SubjectInteractor and SuspendingWorkInteractor.
