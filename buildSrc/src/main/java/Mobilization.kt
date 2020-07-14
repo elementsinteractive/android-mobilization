@@ -1,6 +1,6 @@
 object Mobilization {
     const val githubUrl = "https://maven.pkg.github.com/elementsinteractive/android-mobilization"
-    const val version = "0.1.1"
+    const val version = "0.2.0"
     const val groupId = "nl.elements.mobilization"
 
     object Artifacts {
