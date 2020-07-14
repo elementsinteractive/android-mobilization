@@ -74,4 +74,18 @@ class InteractorTest {
                 .launchIn(this)
         }
     }
+
+    @Test
+    fun `executeSync()  - with params - does not emit status`() {
+        val testInteractor = object : Interactor<Unit>() {
+            override suspend fun doWork(params: Unit) {
+                withContext(testRule.dispatcher) {
+                }
+            }
+        }
+
+        testRule.dispatcher.runBlockingTest {
+            testInteractor.executeSync(Unit)
+        }
+    }
 }

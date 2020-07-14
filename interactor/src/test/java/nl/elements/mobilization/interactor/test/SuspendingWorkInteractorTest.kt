@@ -16,11 +16,13 @@ import kotlinx.coroutines.withContext
 import nl.elements.mobilization.interactor.SuspendingWorkInteractor
 import nl.elements.mobilization.shared.test.TestCoroutineRule
 import org.junit.Rule
+import org.junit.Test
 
 class SuspendingWorkInteractorTest {
     @get:Rule
     val testRule = TestCoroutineRule()
 
+    @Test
     fun `invoke() a SuspendingWorkInteractor - with params - Returns result in observe stream`() {
         val result = "Elements"
 
