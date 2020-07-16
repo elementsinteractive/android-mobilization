@@ -11,11 +11,11 @@ import com.google.firebase.crashlytics.FirebaseCrashlytics
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
+import kotlin.test.assertEquals
 import nl.elements.mobilization.logging.ElementsLogger
 import org.junit.Before
 import org.junit.Test
 import timber.log.Timber
-import kotlin.test.assertEquals
 
 class ElementsLoggerTest {
 
