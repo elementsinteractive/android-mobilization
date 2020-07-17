@@ -24,6 +24,10 @@ plugins {
     id("com.vanniktech.android.junit.jacoco") version "0.16.0"
 }
 
+repositories {
+    jcenter()
+}
+
 allprojects {
     repositories {
         google()
