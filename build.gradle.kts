@@ -4,8 +4,15 @@ import io.gitlab.arturbosch.detekt.Detekt
 buildscript {
     repositories {
         google()
-        jcenter()
         mavenCentral()
+
+        jcenter {
+            content {
+                // detekt needs 'kotlinx-html' for the html report
+                // just allow to include kotlinx projects
+                includeGroup("org.jetbrains.kotlinx")
+            }
+        }
     }
 
     dependencies {
@@ -28,6 +35,7 @@ plugins {
 repositories {
     jcenter()
     mavenCentral()
+    maven { url = uri("https://dl.bintray.com/kotlin/kotlinx.html/") }
 }
 
 allprojects {
@@ -35,6 +43,7 @@ allprojects {
         google()
         jcenter()
         mavenCentral()
+        maven { url = uri("https://dl.bintray.com/kotlin/kotlinx.html/") }
     }
 }
 
