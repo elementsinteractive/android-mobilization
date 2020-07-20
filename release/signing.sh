@@ -7,11 +7,10 @@ create_gradle_properties() {
   GPG_LOCATION=~/.gradle/release.gpg
   GRADLE_PROPERTIES_LOCATION=~/.gradle/gradle.properties
 
+  mkdir -p ~/.gradle
+
   rm -f $GPG_LOCATION
   rm -f $GRADLE_PROPERTIES_LOCATION
-
-  touch $GPG_LOCATION
-  touch $GRADLE_PROPERTIES_LOCATION
 
   echo $GPG_KEY_CONTENTS | base64 -d > $GPG_LOCATION
 
