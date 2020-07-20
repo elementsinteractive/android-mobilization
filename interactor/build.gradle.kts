@@ -1,7 +1,7 @@
 plugins {
     id("kotlin")
     kotlin("kapt")
-    id("maven-publish")
+    id("com.vanniktech.maven.publish")
 }
 
 dependencies {

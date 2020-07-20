@@ -29,7 +29,8 @@ plugins {
     id("com.diffplug.gradle.spotless") version Versions.spotless
     id("io.gitlab.arturbosch.detekt") version Versions.detekt
 
-    id("com.vanniktech.android.junit.jacoco") version "0.16.0"
+    id("com.vanniktech.android.junit.jacoco") version Versions.junitJacoco
+    id("com.vanniktech.maven.publish") version Versions.mavenPublish
 }
 
 repositories {
