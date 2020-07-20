@@ -10,6 +10,9 @@ create_gradle_properties() {
   rm -f $GPG_LOCATION
   rm -f $GRADLE_PROPERTIES_LOCATION
 
+  touch $GPG_LOCATION
+  touch $GRADLE_PROPERTIES_LOCATION
+
   echo $GPG_KEY_CONTENTS | base64 -d > $GPG_LOCATION
 
   printf "signing.keyId=$KEYID\nsigning.password=$PASSWORD\nsigning.secretKeyRingFile=$GPG_LOCATION\n" >> $GRADLE_PROPERTIES_LOCATION
