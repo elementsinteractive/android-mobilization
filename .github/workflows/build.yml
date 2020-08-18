@@ -23,6 +23,13 @@ jobs:
         with:
           java-version: 8
 
+      - name: Set-up signing
+        run: ./release/signing.sh
+        env:
+          GPG_KEY_CONTENTS: ${{ secrets.GPG_KEY_CONTENTS }}
+          ORG_GRADLE_PROJECT_SIGNINGKEYID: ${{ secrets.ORG_GRADLE_PROJECT_SIGNINGKEYID }}
+          ORG_GRADLE_PROJECT_SIGNINGPASSWORD: ${{ secrets.ORG_GRADLE_PROJECT_SIGNINGPASSWORD }}
+
       - name: Generate cache key
         run: ./checksum.sh checksum.txt
 
@@ -55,15 +62,16 @@ jobs:
         env:
           SONATYPE_NEXUS_USERNAME: ${{ secrets.SONATYPE_NEXUS_USERNAME }}
           SONATYPE_NEXUS_PASSWORD: ${{ secrets.SONATYPE_NEXUS_PASSWORD }}
-          ORG_GRADLE_PROJECT_SIGNINGKEY: ${{ secrets.ORG_GRADLE_PROJECT_SIGNINGKEY }}
-          ORG_GRADLE_PROJECT_SIGNINGKEYID: ${{ secrets.ORG_GRADLE_PROJECT_SIGNINGKEYID }}
-          ORG_GRADLE_PROJECT_SIGNINGPASSWORD: ${{ secrets.ORG_GRADLE_PROJECT_SIGNINGPASSWORD }}
 
       - name: Create release for tags
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/v')
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Clean secrets
+        if: always()
+        run: ./release/clean-secrets.sh
 
       - name: Upload build reports
         if: always()

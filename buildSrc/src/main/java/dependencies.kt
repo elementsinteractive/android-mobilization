@@ -9,6 +9,8 @@ object Versions {
     const val spotless = "3.30.0"
     const val detekt = "1.10.0"
     const val jacoco = "0.8.5"
+    const val junitJacoco = "0.16.0"
+    const val mavenPublish = "0.12.0"
 }
 
 object Libs {
