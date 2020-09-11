@@ -12,15 +12,12 @@ android {
         getByName("debug") {
             isTestCoverageEnabled = true
         }
-
-        getByName("release") {
-            isMinifyEnabled = false
-        }
     }
 
     // Library dependencies
     dependencies {
         implementation(Libs.Kotlin.stdlib)
+        implementation(Libs.Kotlin.reflect)
 
         api(Libs.Coroutines.core)
 

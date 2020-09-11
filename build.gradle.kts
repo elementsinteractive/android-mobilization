@@ -26,7 +26,9 @@ buildscript {
 }
 
 plugins {
-    id("com.diffplug.gradle.spotless") version Versions.spotless
+    id("org.jetbrains.dokka") version "1.4.20"
+
+    id("com.diffplug.spotless") version Versions.spotless
     id("io.gitlab.arturbosch.detekt") version Versions.detekt
 
     id("com.vanniktech.android.junit.jacoco") version Versions.junitJacoco
@@ -48,12 +50,20 @@ allprojects {
     }
 }
 
+configurations.all {
+    resolutionStrategy {
+        force("org.jetbrains.kotlin:kotlin-reflect:1.4.21-2")
+    }
+}
+
 subprojects {
-    apply(plugin = "com.diffplug.gradle.spotless")
+    apply(plugin = "com.diffplug.spotless")
     spotless {
         kotlin {
-            target("**/*.kt")
+            target("src/**.kt")
+
             ktlint(Versions.ktlint)
+
             licenseHeaderFile(rootProject.file("spotless/license.kt"))
         }
     }
@@ -90,3 +100,14 @@ apply<nl.elements.mobilization.AndroidMetaModulePlugin>()
 apply<nl.elements.mobilization.KotlinMetaModulePlugin>()
 
 apply(from = "gradle/jacoco.gradle")
+
+signing {
+    if (project.hasProperty("SIGNING_PRIVATE_KEY") &&
+        project.hasProperty("SIGNINGPASSWORD")) {
+        val privateKey = project.property("SIGNING_PRIVATE_KEY")
+        val privateKeyPassword = project.property("SIGNINGPASSWORD")
+        if (privateKey is String && privateKeyPassword is String) {
+            useInMemoryPgpKeys(privateKey, privateKeyPassword)
+        }
+    }
+}

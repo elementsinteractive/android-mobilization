@@ -1,45 +1,37 @@
-name: CI
+name: Build
 
 on:
   push:
     branches:
       - main
-    tags:
-      - 'v*'
   pull_request:
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
-    env:
-      TERM: dumb
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v2
 
       - name: set up JDK
         uses: actions/setup-java@v1
         with:
-          java-version: 8
-
-      - name: Set-up signing
-        run: ./release/signing.sh
-        env:
-          GPG_KEY_CONTENTS: ${{ secrets.GPG_KEY_CONTENTS }}
-          ORG_GRADLE_PROJECT_SIGNINGKEYID: ${{ secrets.ORG_GRADLE_PROJECT_SIGNINGKEYID }}
-          ORG_GRADLE_PROJECT_SIGNINGPASSWORD: ${{ secrets.ORG_GRADLE_PROJECT_SIGNINGPASSWORD }}
-
-      - name: Generate cache key
-        run: ./checksum.sh checksum.txt
+          java-version: 11
 
       - name: Copy CI gradle.properties
         run: mkdir -p ~/.gradle ; cp .github/ci-gradle.properties ~/.gradle/gradle.properties
 
+      - name: Generate cache key
+        run: ./checksum.sh checksum.txt
+
       - uses: actions/cache@v1
         continue-on-error: true # continue if the cache restore/upload fails
         with:
-          path: ~/.gradle/caches
+          path: |
+            ~/.gradle/caches/modules-*
+            ~/.gradle/caches/jars-*
+            ~/.gradle/caches/build-cache-*
           key: ${{ runner.os }}-gradle-${{ hashFiles('checksum.txt') }}
 
       - name: Build and check
@@ -56,25 +48,7 @@ jobs:
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
-      - name: Publish to Maven Central
-        if: startsWith(github.ref, 'refs/tags/v')
-        run: ./gradlew assembleRelease uploadArchives --no-daemon --no-parallel --scan --stacktrace
-        env:
-          SONATYPE_NEXUS_USERNAME: ${{ secrets.SONATYPE_NEXUS_USERNAME }}
-          SONATYPE_NEXUS_PASSWORD: ${{ secrets.SONATYPE_NEXUS_PASSWORD }}
-
-      - name: Create release for tags
-        uses: softprops/action-gh-release@v1
-        if: startsWith(github.ref, 'refs/tags/v')
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Clean secrets
-        if: always()
-        run: ./release/clean-secrets.sh
-
       - name: Upload build reports
-        if: always()
         uses: actions/upload-artifact@v1
         with:
           name: build-reports
@@ -87,7 +61,6 @@ jobs:
           find . -type f -regex ".*/build/test-results/.*xml" -exec cp {} junit/ \;
 
       - name: Upload test results
-        if: always()
         uses: actions/upload-artifact@v1
         with:
           name: junit-results
