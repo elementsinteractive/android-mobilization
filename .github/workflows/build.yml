@@ -24,7 +24,10 @@ jobs:
           java-version: 8
 
       - name: Set-up signing
-        run: ./release/signing.sh
+        shell: bash
+        run: |
+          ./release/signing.sh
+          echo "::set-env name=GRADLE_USER_HOME::$HOME/.gradle"
         env:
           GPG_KEY_CONTENTS: ${{ secrets.GPG_KEY_CONTENTS }}
           ORG_GRADLE_PROJECT_SIGNINGKEYID: ${{ secrets.ORG_GRADLE_PROJECT_SIGNINGKEYID }}
