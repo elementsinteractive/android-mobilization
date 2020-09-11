@@ -17,4 +17,4 @@ create_gradle_properties() {
   printf "signing.keyId=$KEYID\nsigning.password=$PASSWORD\nsigning.secretKeyRingFile=$GPG_LOCATION\n" >> $GRADLE_PROPERTIES_LOCATION
 }
 
-create_gradle_properties $ORG_GRADLE_PROJECT_signingKeyId $ORG_GRADLE_PROJECT_signingPassword $GPG_KEY_CONTENTS
+create_gradle_properties $ORG_GRADLE_PROJECT_SIGNINGKEYID $ORG_GRADLE_PROJECT_SIGNINGPASSWORD $GPG_KEY_CONTENTS
