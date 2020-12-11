@@ -1,5 +1,0 @@
-GPG_LOCATION=~/.gradle/release.gpg
-GRADLE_PROPERTIES_LOCATION=~/.gradle/gradle.properties
-
-rm $GPG_LOCATION
-rm $GRADLE_PROPERTIES_LOCATION
