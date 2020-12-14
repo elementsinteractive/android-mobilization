@@ -92,9 +92,10 @@ apply<nl.elements.mobilization.KotlinMetaModulePlugin>()
 apply(from = "gradle/jacoco.gradle")
 
 signing {
-    if (hasProperty("SIGNING_PRIVATE_KEY") && hasProperty("SIGNINGPASSWORD")) {
-        val privateKey = property("SIGNING_PRIVATE_KEY")
-        val privateKeyPassword = property("SIGNINGPASSWORD")
+    if (project.hasProperty("SIGNING_PRIVATE_KEY") &&
+        project.hasProperty("SIGNINGPASSWORD")) {
+        val privateKey = project.property("SIGNING_PRIVATE_KEY")
+        val privateKeyPassword = project.property("SIGNINGPASSWORD")
         if (privateKey is String && privateKeyPassword is String) {
             useInMemoryPgpKeys(privateKey, privateKeyPassword)
         }
