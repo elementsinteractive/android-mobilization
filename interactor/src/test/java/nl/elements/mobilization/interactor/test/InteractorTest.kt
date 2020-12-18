@@ -6,7 +6,6 @@
  */
 package nl.elements.mobilization.interactor.test
 
-import kotlin.test.assertTrue
 import kotlinx.coroutines.TimeoutCancellationException
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.launchIn
@@ -22,6 +21,7 @@ import nl.elements.mobilization.interactor.invoke
 import nl.elements.mobilization.shared.test.TestCoroutineRule
 import org.junit.Rule
 import org.junit.Test
+import kotlin.test.assertTrue
 
 class InteractorTest {
 

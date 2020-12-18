@@ -12,6 +12,7 @@ java {
 
 dependencies {
     implementation(Libs.Kotlin.stdlib)
+    implementation(Libs.Kotlin.reflect)
 
     implementation(Libs.Coroutines.core)
 }

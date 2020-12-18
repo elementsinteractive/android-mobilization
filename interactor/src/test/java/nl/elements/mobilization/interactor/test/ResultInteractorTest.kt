@@ -6,7 +6,6 @@
  */
 package nl.elements.mobilization.interactor.test
 
-import kotlin.test.assertEquals
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.runBlockingTest
 import nl.elements.mobilization.interactor.ResultInteractor
@@ -14,6 +13,7 @@ import nl.elements.mobilization.interactor.invoke
 import nl.elements.mobilization.shared.test.TestCoroutineRule
 import org.junit.Rule
 import org.junit.Test
+import kotlin.test.assertEquals
 
 class ResultInteractorTest {
 

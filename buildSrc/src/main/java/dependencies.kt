@@ -5,10 +5,10 @@ object BuildConfig {
 }
 
 object Versions {
-    const val ktlint = "0.34.2"
-    const val spotless = "3.30.0"
-    const val detekt = "1.10.0"
-    const val jacoco = "0.8.5"
+    const val ktlint = "0.40.0"
+    const val spotless = "5.8.2"
+    const val detekt = "1.14.2"
+    const val jacoco = "0.8.6"
     const val junitJacoco = "0.16.0"
     const val mavenPublish = "0.13.0"
 }
@@ -19,11 +19,12 @@ object Libs {
 
     object Kotlin {
         private const val version = "1.4.10"
-        const val stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$version"
+        const val stdlib = "org.jetbrains.kotlin:kotlin-stdlib:$version"
         const val gradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$version"
         const val extensions = "org.jetbrains.kotlin:kotlin-android-extensions:$version"
         const val test = "org.jetbrains.kotlin:kotlin-test:$version"
         const val testJunit = "org.jetbrains.kotlin:kotlin-test-junit:$version"
+        const val reflect = "org.jetbrains.kotlin:kotlin-reflect:$version"
     }
 
     object Coroutines {
@@ -75,5 +76,5 @@ object Libs {
 
     const val timber = "com.jakewharton.timber:timber:4.7.1"
 
-    const val mockk = "io.mockk:mockk:1.9.3"
+    const val mockk = "io.mockk:mockk:1.10.3"
 }

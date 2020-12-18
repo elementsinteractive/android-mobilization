@@ -6,7 +6,6 @@
  */
 package nl.elements.mobilization.shared.test
 
-import kotlin.coroutines.ContinuationInterceptor
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.TestCoroutineDispatcher
@@ -16,6 +15,7 @@ import kotlinx.coroutines.test.setMain
 import org.junit.rules.TestRule
 import org.junit.runner.Description
 import org.junit.runners.model.Statement
+import kotlin.coroutines.ContinuationInterceptor
 
 /**
  * JUnit 4 Rule for automatically creating a [TestCoroutineDispatcher],

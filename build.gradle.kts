@@ -28,7 +28,7 @@ buildscript {
 plugins {
     id("org.jetbrains.dokka") version "1.4.20"
 
-    id("com.diffplug.gradle.spotless") version Versions.spotless
+    id("com.diffplug.spotless") version Versions.spotless
     id("io.gitlab.arturbosch.detekt") version Versions.detekt
 
     id("com.vanniktech.android.junit.jacoco") version Versions.junitJacoco
@@ -51,11 +51,13 @@ allprojects {
 }
 
 subprojects {
-    apply(plugin = "com.diffplug.gradle.spotless")
+    apply(plugin = "com.diffplug.spotless")
     spotless {
         kotlin {
-            target("**/*.kt")
+            target("src/**.kt")
+
             ktlint(Versions.ktlint)
+
             licenseHeaderFile(rootProject.file("spotless/license.kt"))
         }
     }

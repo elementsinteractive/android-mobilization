@@ -6,7 +6,6 @@
  */
 package nl.elements.mobilization.interactor.test
 
-import kotlin.test.assertEquals
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.take
@@ -17,6 +16,7 @@ import nl.elements.mobilization.interactor.SuspendingWorkInteractor
 import nl.elements.mobilization.shared.test.TestCoroutineRule
 import org.junit.Rule
 import org.junit.Test
+import kotlin.test.assertEquals
 
 class SuspendingWorkInteractorTest {
     @get:Rule
