@@ -50,6 +50,12 @@ allprojects {
     }
 }
 
+configurations.all {
+    resolutionStrategy {
+        force("org.jetbrains.kotlin:kotlin-reflect:1.4.10")
+    }
+}
+
 subprojects {
     apply(plugin = "com.diffplug.spotless")
     spotless {
