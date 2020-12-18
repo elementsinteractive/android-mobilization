@@ -12,10 +12,6 @@ android {
         getByName("debug") {
             isTestCoverageEnabled = true
         }
-
-        getByName("release") {
-            isMinifyEnabled = false
-        }
     }
 
     // Library dependencies
