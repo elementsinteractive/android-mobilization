@@ -1,6 +1,6 @@
 plugins {
-    id("java-library")
     id("kotlin")
+    id("java")
     kotlin("kapt")
     id("com.vanniktech.maven.publish")
 }

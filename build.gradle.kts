@@ -26,6 +26,8 @@ buildscript {
 }
 
 plugins {
+    id("org.jetbrains.dokka") version "1.4.20"
+
     id("com.diffplug.gradle.spotless") version Versions.spotless
     id("io.gitlab.arturbosch.detekt") version Versions.detekt
 
