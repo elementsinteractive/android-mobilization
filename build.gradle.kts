@@ -52,7 +52,7 @@ allprojects {
 
 configurations.all {
     resolutionStrategy {
-        force("org.jetbrains.kotlin:kotlin-reflect:1.4.10")
+        force("org.jetbrains.kotlin:kotlin-reflect:1.4.21")
     }
 }
 
