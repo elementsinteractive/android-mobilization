@@ -1,7 +1,7 @@
 plugins {
     id("kotlin")
-    id("java")
     kotlin("kapt")
+    id("org.jetbrains.dokka")
     id("com.vanniktech.maven.publish")
 }
 

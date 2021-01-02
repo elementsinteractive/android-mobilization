@@ -19,9 +19,6 @@ buildscript {
         classpath(Libs.androidGradlePlugin)
         classpath(Libs.Kotlin.gradlePlugin)
         classpath(Libs.mavenPublishGradlePlugin)
-
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
     }
 }
 
@@ -52,7 +49,7 @@ allprojects {
 
 configurations.all {
     resolutionStrategy {
-        force("org.jetbrains.kotlin:kotlin-reflect:1.4.21-2")
+        force("org.jetbrains.kotlin:kotlin-reflect:${Libs.Kotlin.version}")
     }
 }
 
