@@ -1,5 +1,5 @@
 junitJacoco {
-    jacocoVersion = "0.8.5"
+    jacocoVersion = Versions.jacoco
     includeNoLocationClasses = false
     ignoreProjects = ["commonTest"]
     excludes = [
