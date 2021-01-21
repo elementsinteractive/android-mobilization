@@ -48,7 +48,7 @@ exceptions:
   ThrowingExceptionFromFinally:
     active: true
   ThrowingExceptionsWithoutMessageOrCause:
-    active: true
+    active: false
   ThrowingNewInstanceOfSameException:
     active: true
 
