@@ -208,7 +208,7 @@ class BreadcrumbsTest {
     private fun log(prefix: String, activity: Any?): String = when (activity) {
         is Activity -> "$prefix: Activity"
         is Fragment -> "$prefix: Fragment"
-        else -> throw NotImplementedError("$activity is not supported")
+        else -> throw IllegalArgumentException("$activity is not supported")
     }
 
     private fun plantTree(message: (String) -> Unit) {
