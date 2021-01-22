@@ -2,7 +2,6 @@ plugins {
     id("kotlin")
     id("java")
     kotlin("kapt")
-    id("maven-publish")
 }
 
 java {
