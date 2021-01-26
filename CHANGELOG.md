@@ -14,13 +14,15 @@ Types of changes:
 
 ## [Unreleased]
 
-## [0.2.0] - 2020-07-14
-
+## [0.3.0]
 ### Added
+- Breadcrumbs class was added into the [Logging](./logging) module. Tracks the most important lifecycle events and posts them to Timber.
 
+## [Released]
+## [0.2.0] - 2020-07-14
+### Added
 - [Interactor](./interactor) module with use case examples. Includes a base Interactor, ResultInteractor, SubjectInteractor and SuspendingWorkInteractor.
 
 ## [0.1.0] - 2020-06-24
-
 ### Added
 - Initial test release

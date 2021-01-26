@@ -19,6 +19,8 @@ android {
         implementation(Libs.Kotlin.stdlib)
         implementation(Libs.Kotlin.reflect)
 
+        implementation(Libs.AndroidX.appcompat)
+
         api(Libs.Coroutines.core)
 
         implementation(Libs.Google.firebaseCrashlytics)
