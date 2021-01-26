@@ -16,7 +16,7 @@ Types of changes:
 
 ## [0.3.0]
 ### Added
-- Breadcrumbs class was added into the [Logging](./logging) module. Tracks the most important lifecycle events and posts them Timber.
+- Breadcrumbs class was added into the [Logging](./logging) module. Tracks the most important lifecycle events and posts them to Timber.
 
 ## [Released]
 ## [0.2.0] - 2020-07-14
