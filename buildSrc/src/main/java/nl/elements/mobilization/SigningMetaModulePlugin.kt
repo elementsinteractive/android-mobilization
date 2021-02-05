@@ -15,15 +15,19 @@ class SigningMetaModulePlugin : Plugin<Project> {
                         if (project.hasProperty("SIGNING_PRIVATE_KEY") &&
                             project.hasProperty("SIGNINGPASSWORD")
                         ) {
-                            val privateKey = project.property("SIGNING_PRIVATE_KEY")
-                            val privateKeyPassword = project.property("SIGNINGPASSWORD")
+                            val privateKey = project.property("SIGNING_PRIVATE_KEY") as String
+                            val privateKeyPassword = project.property("SIGNINGPASSWORD") as String
 
-                            if (privateKey is String && privateKeyPassword is String) {
-                                useInMemoryPgpKeys(privateKey, privateKeyPassword)
-                            }
+                            val username = project.property("SONATYPE_NEXUS_USERNAME") as String
+
+                            println("username: $username")
+                            println("Has private key and password")
+
+                            useInMemoryPgpKeys(privateKey, privateKeyPassword)
                         }
                     }
                 }
+
             }
         }
     }
