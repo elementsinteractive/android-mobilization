@@ -10,10 +10,10 @@ java {
 }
 
 dependencies {
-    implementation(Libs.Kotlin.stdlib)
+    implementation(libs.kotlin.stdlib)
 
-    implementation(Libs.Coroutines.core)
+    api(libs.kotlin.coroutines.core)
 
-    implementation(Libs.Kotlin.testJunit)
-    implementation(Libs.Coroutines.test)
+    testImplementation(libs.kotlin.test.junit)
+    testImplementation(libs.kotlin.coroutines.test)
 }

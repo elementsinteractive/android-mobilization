@@ -1,11 +1,38 @@
 [versions]
+androidxtest = "1.3.0"
+coroutines = "1.4.3"
+espresso = "3.4.0-alpha03"
 kotlin = "1.4.32"
 ktlint = "0.40.0"
 
 [libraries]
-
 android-gradlePlugin = "com.android.tools.build:gradle:7.0.0-alpha15"
 
+androidx-appcompat = "androidx.appcompat:appcompat:1.3.0-rc01"
+
+androidx-test-core = { module = "androidx.test:core", version.ref = "androidxtest" }
+androidx-test-junit = "androidx.test.ext:junit-ktx:1.1.2"
+androidx-test-rules = { module = "androidx.test:rules", version.ref = "androidxtest" }
+androidx-test-runner = { module = "androidx.test:runner", version.ref = "androidxtest" }
+
+espresso-contrib = { module = "androidx.test.espresso:espresso-contrib", version.ref = "espresso" }
+espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "espresso" }
+espresso-intents = { module = "androidx.test.espresso:espresso-intents", version.ref = "espresso" }
+espresso-web = { module = "androidx.test.espresso:espresso-web", version.ref = "espresso" }
+
+google-crashlytics = "com.google.firebase:firebase-crashlytics-ktx:17.4.1"
+
 kotlin-gradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
+kotlin-test-core = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
+kotlin-test-junit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlin" }
+kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin" }
+kotlin-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
+kotlin-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }
+kotlin-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
 
 mavenPublish-gradlePlugin = "com.vanniktech:gradle-maven-publish-plugin:0.13.0"
+
+timber = "com.jakewharton.timber:timber:4.7.1"
+
+mockk = "io.mockk:mockk:1.10.5"
