@@ -15,12 +15,9 @@ buildscript {
     }
 
     dependencies {
-        classpath(rootProject.libs.android.gradlePlugin)
-        classpath(rootProject.libs.kotlin.gradlePlugin)
-        classpath(rootProject.libs.mavenPublish.gradlePlugin)
-//        classpath("com.android.tools.build:gradle:7.0.0-alpha15")
-//        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.32")
-//        classpath("com.vanniktech:gradle-maven-publish-plugin:0.13.0")
+        classpath("com.android.tools.build:gradle:7.0.0-alpha15")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.32")
+        classpath("com.vanniktech:gradle-maven-publish-plugin:0.13.0")
     }
 }
 
