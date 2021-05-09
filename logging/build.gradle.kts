@@ -1,5 +1,3 @@
-import Extensions.androidTestImplementations
-
 plugins {
     id("com.android.library")
     kotlin("android")
