@@ -1,0 +1,11 @@
+[versions]
+kotlin = "1.4.32"
+ktlint = "0.40.0"
+
+[libraries]
+
+android-gradlePlugin = "com.android.tools.build:gradle:7.0.0-alpha15"
+
+kotlin-gradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+
+mavenPublish-gradlePlugin = "com.vanniktech:gradle-maven-publish-plugin:0.13.0"

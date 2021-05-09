@@ -5,7 +5,6 @@ buildscript {
     repositories {
         google()
         mavenCentral()
-
         jcenter {
             content {
                 // detekt needs 'kotlinx-html' for the html report
@@ -16,20 +15,20 @@ buildscript {
     }
 
     dependencies {
-        classpath(Libs.androidGradlePlugin)
-        classpath(Libs.Kotlin.gradlePlugin)
-        classpath(Libs.mavenPublishGradlePlugin)
+//        classpath(libs.android.gradlePlugin)
+//        classpath(libs.kotlin-gradlePlugin)
+//        classpath(libs.mavenPublish-gradlePlugin)
     }
 }
 
 plugins {
     id("org.jetbrains.dokka") version "1.4.20"
 
-    id("com.diffplug.spotless") version Versions.spotless
-    id("io.gitlab.arturbosch.detekt") version Versions.detekt
+    id("com.diffplug.spotless") version "5.12.4"
+    id("io.gitlab.arturbosch.detekt") version "1.15.0"
 
-    id("com.vanniktech.android.junit.jacoco") version Versions.junitJacoco
-    id("com.vanniktech.maven.publish") version Versions.mavenPublish apply false
+    id("com.vanniktech.android.junit.jacoco") version "0.16.0"
+    id("com.vanniktech.maven.publish") version "0.13.0" apply false
 }
 
 repositories {
@@ -59,7 +58,7 @@ subprojects {
         kotlin {
             target("src/**.kt")
 
-            ktlint(Versions.ktlint)
+            ktlint(libs.versions.ktlint.get())
 
             licenseHeaderFile(rootProject.file("spotless/license.kt"))
         }
@@ -67,7 +66,7 @@ subprojects {
 
     apply(plugin = "io.gitlab.arturbosch.detekt")
     detekt {
-        version = Versions.detekt
+        version = "1.15.0"
         input = files("$projectDir/src")
         config = files("$rootDir/detekt.yml")
 

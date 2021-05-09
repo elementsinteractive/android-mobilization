@@ -4,21 +4,11 @@ object BuildConfig {
     const val targetSdk = 30
 }
 
-object Versions {
-    const val ktlint = "0.40.0"
-    const val spotless = "5.9.0"
-    const val detekt = "1.15.0"
-    const val jacoco = "0.8.6"
-    const val junitJacoco = "0.16.0"
-    const val mavenPublish = "0.13.0"
-}
 
 object Libs {
-    const val androidGradlePlugin = "com.android.tools.build:gradle:4.1.1"
-    const val mavenPublishGradlePlugin = "com.vanniktech:gradle-maven-publish-plugin:${Versions.mavenPublish}"
 
     object Kotlin {
-        const val version = "1.4.30-RC"
+        const val version = "1.4.32"
         const val stdlib = "org.jetbrains.kotlin:kotlin-stdlib:$version"
         const val gradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$version"
         const val extensions = "org.jetbrains.kotlin:kotlin-android-extensions:$version"
@@ -28,7 +18,7 @@ object Libs {
     }
 
     object Coroutines {
-        private const val version = "1.4.2"
+        private const val version = "1.4.3"
         const val core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version"
         const val android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$version"
         const val test = "org.jetbrains.kotlinx:kotlinx-coroutines-test:$version"
