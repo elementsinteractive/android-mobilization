@@ -15,9 +15,12 @@ buildscript {
     }
 
     dependencies {
-        classpath("com.android.tools.build:gradle:7.0.0-alpha15")
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.32")
-        classpath("com.vanniktech:gradle-maven-publish-plugin:0.13.0")
+        classpath(rootProject.libs.android.gradlePlugin)
+        classpath(rootProject.libs.kotlin.gradlePlugin)
+        classpath(rootProject.libs.mavenPublish.gradlePlugin)
+//        classpath("com.android.tools.build:gradle:7.0.0-alpha15")
+//        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.32")
+//        classpath("com.vanniktech:gradle-maven-publish-plugin:0.13.0")
     }
 }
 
@@ -48,7 +51,7 @@ allprojects {
 
 configurations.all {
     resolutionStrategy {
-        force(libs.kotlin.reflect)
+        force(rootProject.libs.kotlin.reflect)
     }
 }
 
@@ -58,7 +61,7 @@ subprojects {
         kotlin {
             target("src/**.kt")
 
-            ktlint(libs.versions.ktlint.get())
+            ktlint(rootProject.libs.versions.ktlint.get())
 
             licenseHeaderFile(rootProject.file("spotless/license.kt"))
         }
@@ -66,7 +69,7 @@ subprojects {
 
     apply(plugin = "io.gitlab.arturbosch.detekt")
     detekt {
-        version = libs.versions.detekt
+        version = rootProject.libs.versions.detekt
         input = files("$projectDir/src")
         config = files("$rootDir/detekt.yml")
 
