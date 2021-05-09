@@ -15,14 +15,14 @@ buildscript {
     }
 
     dependencies {
-        classpath("com.android.tools.build:gradle:7.0.0-alpha15")
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.32")
-        classpath("com.vanniktech:gradle-maven-publish-plugin:0.13.0")
+        classpath(libs.android.gradlePlugin)
+        classpath(libs.kotlin.gradlePlugin)
+        classpath(libs.mavenPublish.gradlePlugin)
     }
 }
 
 plugins {
-    id("org.jetbrains.dokka") version "1.4.20"
+    id("org.jetbrains.dokka") version "1.4.32"
 
     id("com.diffplug.spotless") version "5.12.4"
     id("io.gitlab.arturbosch.detekt") version "1.15.0"
@@ -48,7 +48,7 @@ allprojects {
 
 configurations.all {
     resolutionStrategy {
-        force("org.jetbrains.kotlin:kotlin-reflect:${libs.versions.kotlin.get()}")
+        force(libs.kotlin.reflect)
     }
 }
 
@@ -66,7 +66,7 @@ subprojects {
 
     apply(plugin = "io.gitlab.arturbosch.detekt")
     detekt {
-        version = "1.15.0"
+        version = libs.versions.detekt
         input = files("$projectDir/src")
         config = files("$rootDir/detekt.yml")
 
