@@ -42,9 +42,9 @@ subprojects {
     apply(plugin = "com.diffplug.spotless")
     spotless {
         kotlin {
-            target("src/**.kt")
+            target("**/**.kt")
 
-            ktlint("1.5.0")
+            ktlint(libs.versions.ktlint.get())
 
             licenseHeaderFile(rootProject.file("spotless/license.kt"))
         }

@@ -1,3 +1,9 @@
+/*
+ * Copyright 2021 Elements
+ *
+ * Licensed under the BSD-3 license:
+ * https://opensource.org/licenses/BSD-3-Clause
+ */
 package nl.elements.mobilization.reporting
 
 import android.app.Activity
@@ -54,7 +60,6 @@ class Breadcrumbs : Application.ActivityLifecycleCallbacks, FragmentManager.Frag
     override fun onActivitySaveInstanceState(activity: Activity, outState: Bundle) {
         // Unused mandatory overrides
     }
-
 
     override fun onActivityStarted(activity: Activity) {
         // Unused mandatory overrides

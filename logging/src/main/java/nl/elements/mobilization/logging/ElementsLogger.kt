@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 Elements
+ * Copyright 2021 Elements
  *
  * Licensed under the BSD-3 license:
  * https://opensource.org/licenses/BSD-3-Clause
@@ -9,8 +9,8 @@ package nl.elements.mobilization.logging
 import android.os.Build
 import android.util.Log
 import com.google.firebase.crashlytics.FirebaseCrashlytics
-import java.util.regex.Pattern
 import timber.log.Timber
+import java.util.regex.Pattern
 
 /*
  * Original License as derived from https://github.com/chrisbanes/tivi/
