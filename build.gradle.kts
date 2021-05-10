@@ -5,18 +5,12 @@ buildscript {
     repositories {
         google()
         mavenCentral()
-        jcenter {
-            content {
-                // detekt needs 'kotlinx-html' for the html report
-                // just allow to include kotlinx projects
-                includeGroup("org.jetbrains.kotlinx")
-            }
-        }
+        jcenter()
     }
 
     dependencies {
         classpath("com.android.tools.build:gradle:7.0.0-alpha15")
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.32")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.0")
         classpath("com.vanniktech:gradle-maven-publish-plugin:0.13.0")
     }
 }
@@ -25,30 +19,22 @@ plugins {
     id("org.jetbrains.dokka") version "1.4.32"
 
     id("com.diffplug.spotless") version "5.12.4"
-    id("io.gitlab.arturbosch.detekt") version "1.15.0"
+    id("io.gitlab.arturbosch.detekt") version "1.16.0"
 
     id("com.vanniktech.android.junit.jacoco") version "0.16.0"
     id("com.vanniktech.maven.publish") version "0.13.0" apply false
 }
 
 repositories {
-    jcenter()
     mavenCentral()
-    maven { url = uri("https://dl.bintray.com/kotlin/kotlinx.html/") }
+    jcenter()
 }
 
 allprojects {
     repositories {
         google()
-        jcenter()
         mavenCentral()
-        maven { url = uri("https://dl.bintray.com/kotlin/kotlinx.html/") }
-    }
-}
-
-configurations.all {
-    resolutionStrategy {
-        force(rootProject.libs.kotlin.reflect)
+        jcenter()
     }
 }
 
@@ -58,7 +44,7 @@ subprojects {
         kotlin {
             target("src/**.kt")
 
-            ktlint(rootProject.libs.versions.ktlint.get())
+            ktlint("1.5.0")
 
             licenseHeaderFile(rootProject.file("spotless/license.kt"))
         }
@@ -66,7 +52,6 @@ subprojects {
 
     apply(plugin = "io.gitlab.arturbosch.detekt")
     detekt {
-        version = rootProject.libs.versions.detekt
         input = files("$projectDir/src")
         config = files("$rootDir/detekt.yml")
 
@@ -75,8 +60,11 @@ subprojects {
     }
 }
 
-tasks.create<Detekt>("detektCheck") {
+val detektCheck by tasks.registering(Detekt::class) {
     description = "Runs a failfast detekt build."
+    parallel = true
+    buildUponDefaultConfig = true
+
     setSource(files(
         "$projectDir/interactor/src",
         "$projectDir/logging-api/src",
@@ -87,9 +75,10 @@ tasks.create<Detekt>("detektCheck") {
     include("**/*.kt")
     include("**/*.kts")
     exclude(".*test.*")
-    exclude(".*/resources/.*")
-    exclude(".*/tmp/.*")
+    exclude("**/resources/**")
+    exclude("**/tmp/**")
     exclude(".*/res/.*")
+    exclude("**/build/**")
 }
 
 apply<nl.elements.mobilization.AndroidMetaModulePlugin>()
