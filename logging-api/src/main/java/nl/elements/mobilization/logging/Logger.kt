@@ -6,10 +6,10 @@
  */
 package nl.elements.mobilization.logging
 
-@Suppress("ComplexInterface")
 /**
  * Logs different kinds of messages
  */
+@Suppress("ComplexInterface", "TooManyFunctions")
 interface Logger {
 
     /**

@@ -20,6 +20,7 @@ import timber.log.Timber.i
  * highly correlated to issues compared to starting events.
  *
  */
+@Suppress("TooManyFunctions")
 class Breadcrumbs : Application.ActivityLifecycleCallbacks, FragmentManager.FragmentLifecycleCallbacks() {
 
     override fun onActivityPaused(activity: Activity) = log("<  onPaused", activity)
@@ -50,15 +51,17 @@ class Breadcrumbs : Application.ActivityLifecycleCallbacks, FragmentManager.Frag
 
     override fun onFragmentResumed(fm: FragmentManager, f: Fragment) = log(">  onResume", f)
 
-    // unused mandatory overrides
     override fun onActivitySaveInstanceState(activity: Activity, outState: Bundle) {
+        // Unused mandatory overrides
     }
 
 
     override fun onActivityStarted(activity: Activity) {
+        // Unused mandatory overrides
     }
 
     override fun onActivityStopped(activity: Activity) {
+        // Unused mandatory overrides
     }
 
     private fun screenToString(activity: Any?): String =
