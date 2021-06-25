@@ -8,6 +8,7 @@ plugins {
 android {
     // Library dependencies
     dependencies {
+        implementation(libs.kotlin.jdk)
         implementation(libs.kotlin.stdlib)
         implementation(libs.kotlin.reflect)
 
