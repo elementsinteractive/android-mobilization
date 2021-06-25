@@ -18,7 +18,7 @@ plugins {
     id("org.jetbrains.dokka") version "1.4.32"
 
     id("com.diffplug.spotless") version "5.12.4"
-    id("io.gitlab.arturbosch.detekt") version "1.16.0"
+    id("io.gitlab.arturbosch.detekt") version "1.17.1"
 
     id("com.vanniktech.android.junit.jacoco") version "0.16.0"
     id("com.vanniktech.maven.publish") version "0.13.0" apply false
