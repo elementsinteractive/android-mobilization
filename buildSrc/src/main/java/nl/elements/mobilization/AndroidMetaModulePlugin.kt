@@ -26,8 +26,8 @@ class AndroidMetaModulePlugin : Plugin<Project> {
                         compileSdkVersion(BuildConfig.compileSdk)
 
                         defaultConfig {
-                            minSdkVersion(BuildConfig.minSdk)
-                            targetSdkVersion(BuildConfig.targetSdk)
+                            minSdk = BuildConfig.minSdk
+                            targetSdk = BuildConfig.targetSdk
                         }
 
                         lintOptions {
