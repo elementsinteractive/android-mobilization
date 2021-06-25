@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 Elements
+ * Copyright 2021 Elements
  *
  * Licensed under the BSD-3 license:
  * https://opensource.org/licenses/BSD-3-Clause
@@ -9,8 +9,8 @@ package nl.elements.mobilization.logging
 import android.os.Build
 import android.util.Log
 import com.google.firebase.crashlytics.FirebaseCrashlytics
-import java.util.regex.Pattern
 import timber.log.Timber
+import java.util.regex.Pattern
 
 /*
  * Original License as derived from https://github.com/chrisbanes/tivi/
@@ -29,6 +29,7 @@ import timber.log.Timber
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+@Suppress("TooManyFunctions")
 class ElementsLogger constructor(
     private val firebaseCrashlytics: FirebaseCrashlytics
 ) : Logger {
@@ -111,7 +112,7 @@ private class ReportingDebugTree : Timber.DebugTree() {
         }
         tag = tag.substring(tag.lastIndexOf('.') + 1)
         // Tag length limit was removed in API 24.
-        return if (tag.length <= MAX_TAG_LENGTH || Build.VERSION.SDK_INT >= 24) {
+        return if (tag.length <= MAX_TAG_LENGTH || Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             tag
         } else tag.substring(0, MAX_TAG_LENGTH)
     }

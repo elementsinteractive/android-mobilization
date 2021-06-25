@@ -1,4 +1,4 @@
-[![kotlin](https://img.shields.io/badge/kotlin-1.3.72-blue.svg)]()
+[![kotlin](https://img.shields.io/badge/kotlin-1.5.20-blue.svg)]()
 
 logging-api
 ===========

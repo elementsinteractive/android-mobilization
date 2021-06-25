@@ -1,3 +1,9 @@
+/*
+ * Copyright 2021 Elements
+ *
+ * Licensed under the BSD-3 license:
+ * https://opensource.org/licenses/BSD-3-Clause
+ */
 package nl.elements.mobilization.reporting
 
 import android.app.Activity
@@ -219,6 +225,4 @@ class BreadcrumbsTest {
             }
         })
     }
-
-
 }

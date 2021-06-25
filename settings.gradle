@@ -1,7 +1,17 @@
 pluginManagement {
     repositories {
         gradlePluginPortal()
-        jcenter()
+    }
+}
+
+plugins {
+    id 'com.gradle.enterprise' version '3.0'
+}
+
+gradleEnterprise {
+    buildScan {
+        termsOfServiceUrl = 'https://gradle.com/terms-of-service'
+        termsOfServiceAgree = 'yes'
     }
 }
 
@@ -11,3 +21,7 @@ include ':interactor'
 include ':shared:commonTest'
 
 rootProject.name = "Elements Android Mobilization"
+
+// Enable Gradle's version catalog support
+// https://docs.gradle.org/current/userguide/platforms.html
+enableFeaturePreview("VERSION_CATALOGS")

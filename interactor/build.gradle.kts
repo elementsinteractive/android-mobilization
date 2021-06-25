@@ -11,18 +11,16 @@ java {
 }
 
 dependencies {
-    implementation(Libs.Kotlin.stdlib)
-    implementation(Libs.Kotlin.reflect)
+    implementation(libs.kotlin.stdlib)
+    implementation(libs.kotlin.reflect)
 
-    implementation(Libs.Coroutines.core)
-}
+    implementation(libs.kotlin.coroutines.core)
 
-// Test dependencies
-dependencies {
-    testImplementation(Libs.Kotlin.stdlib)
-    testImplementation(Libs.Kotlin.test)
-    testImplementation(Libs.Kotlin.testJunit)
-    testImplementation(Libs.Coroutines.test)
+
+    // Test dependencies
+    testImplementation(libs.kotlin.test.core)
+    testImplementation(libs.kotlin.test.junit)
+    testImplementation(libs.kotlin.coroutines.test)
 
     testImplementation(project(":shared:commonTest"))
 }

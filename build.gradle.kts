@@ -5,51 +5,34 @@ buildscript {
     repositories {
         google()
         mavenCentral()
-
-        jcenter {
-            content {
-                // detekt needs 'kotlinx-html' for the html report
-                // just allow to include kotlinx projects
-                includeGroup("org.jetbrains.kotlinx")
-            }
-        }
     }
 
     dependencies {
-        classpath(Libs.androidGradlePlugin)
-        classpath(Libs.Kotlin.gradlePlugin)
-        classpath(Libs.mavenPublishGradlePlugin)
+        classpath("com.android.tools.build:gradle:7.0.0-beta03")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.20")
+        classpath("com.vanniktech:gradle-maven-publish-plugin:0.13.0")
     }
 }
 
 plugins {
-    id("org.jetbrains.dokka") version "1.4.20"
+    id("org.jetbrains.dokka") version "1.4.32"
 
-    id("com.diffplug.spotless") version Versions.spotless
-    id("io.gitlab.arturbosch.detekt") version Versions.detekt
+    id("com.diffplug.spotless") version "5.12.4"
+    id("io.gitlab.arturbosch.detekt") version "1.16.0"
 
-    id("com.vanniktech.android.junit.jacoco") version Versions.junitJacoco
-    id("com.vanniktech.maven.publish") version Versions.mavenPublish apply false
+    id("com.vanniktech.android.junit.jacoco") version "0.16.0"
+    id("com.vanniktech.maven.publish") version "0.13.0" apply false
 }
 
 repositories {
-    jcenter()
     mavenCentral()
-    maven { url = uri("https://dl.bintray.com/kotlin/kotlinx.html/") }
 }
 
 allprojects {
     repositories {
         google()
-        jcenter()
         mavenCentral()
-        maven { url = uri("https://dl.bintray.com/kotlin/kotlinx.html/") }
-    }
-}
-
-configurations.all {
-    resolutionStrategy {
-        force("org.jetbrains.kotlin:kotlin-reflect:${Libs.Kotlin.version}")
+        maven("https://maven.pkg.jetbrains.space/public/p/kotlinx-html/maven")
     }
 }
 
@@ -57,9 +40,9 @@ subprojects {
     apply(plugin = "com.diffplug.spotless")
     spotless {
         kotlin {
-            target("src/**.kt")
+            target("**/**.kt")
 
-            ktlint(Versions.ktlint)
+            ktlint(libs.versions.ktlint.get())
 
             licenseHeaderFile(rootProject.file("spotless/license.kt"))
         }
@@ -67,7 +50,6 @@ subprojects {
 
     apply(plugin = "io.gitlab.arturbosch.detekt")
     detekt {
-        version = Versions.detekt
         input = files("$projectDir/src")
         config = files("$rootDir/detekt.yml")
 
@@ -76,8 +58,11 @@ subprojects {
     }
 }
 
-tasks.create<Detekt>("detektCheck") {
+val detektCheck by tasks.registering(Detekt::class) {
     description = "Runs a failfast detekt build."
+    parallel = true
+    buildUponDefaultConfig = true
+
     setSource(files(
         "$projectDir/interactor/src",
         "$projectDir/logging-api/src",
@@ -88,9 +73,10 @@ tasks.create<Detekt>("detektCheck") {
     include("**/*.kt")
     include("**/*.kts")
     exclude(".*test.*")
-    exclude(".*/resources/.*")
-    exclude(".*/tmp/.*")
+    exclude("**/resources/**")
+    exclude("**/tmp/**")
     exclude(".*/res/.*")
+    exclude("**/build/**")
 }
 
 apply<nl.elements.mobilization.AndroidMetaModulePlugin>()

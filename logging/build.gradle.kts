@@ -1,5 +1,3 @@
-import Extensions.androidTestImplementations
-
 plugins {
     id("com.android.library")
     kotlin("android")
@@ -8,42 +6,37 @@ plugins {
 }
 
 android {
-    buildTypes {
-        getByName("debug") {
-            isTestCoverageEnabled = true
-        }
-    }
-
     // Library dependencies
     dependencies {
-        implementation(Libs.Kotlin.stdlib)
-        implementation(Libs.Kotlin.reflect)
+        implementation(libs.kotlin.jdk)
+        implementation(libs.kotlin.stdlib)
+        implementation(libs.kotlin.reflect)
 
-        implementation(Libs.AndroidX.appcompat)
+        implementation(libs.androidx.appcompat)
 
-        api(Libs.Coroutines.core)
+        api(libs.kotlin.coroutines.core)
 
-        implementation(Libs.Google.firebaseCrashlytics)
+        implementation(libs.google.crashlytics)
 
-        implementation(Libs.timber)
+        implementation(libs.timber)
 
         api(project(":logging-api"))
-    }
 
-    // Test dependencies
-    dependencies {
-        testImplementation(Libs.Kotlin.stdlib)
-        testImplementation(Libs.Kotlin.test)
-        testImplementation(Libs.Kotlin.testJunit)
-        testImplementation(Libs.Coroutines.test)
-        testImplementation(Libs.AndroidX.Test.core)
-        testImplementation(Libs.mockk)
 
-        androidTestImplementation(Libs.AndroidX.Test.junit)
-        androidTestImplementation(Libs.AndroidX.Test.junitKtx)
-        androidTestImplementation(Libs.AndroidX.Test.rules)
-        androidTestImplementation(Libs.AndroidX.Test.runner)
+        // Test dependencies
+        testImplementation(libs.kotlin.test.core)
+        testImplementation(libs.kotlin.test.junit)
+        testImplementation(libs.kotlin.coroutines.test)
+        testImplementation(libs.androidx.test.core)
+        testImplementation(libs.mockk)
 
-        androidTestImplementations(Libs.AndroidX.Test.Espresso.dependencies)
+        androidTestImplementation(libs.androidx.test.junit)
+        androidTestImplementation(libs.androidx.test.rules)
+        androidTestImplementation(libs.androidx.test.runner)
+
+        androidTestImplementation(libs.espresso.core)
+        androidTestImplementation(libs.espresso.contrib)
+        androidTestImplementation(libs.espresso.intents)
+        androidTestImplementation(libs.espresso.web)
     }
 }

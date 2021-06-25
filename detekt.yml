@@ -3,7 +3,7 @@ build:
 
 comments:
   AbsentOrWrongFileLicense:
-    active: true
+    active: false
     licenseTemplateFile: 'spotless/license.kt'
   CommentOverPrivateProperty:
     active: true
