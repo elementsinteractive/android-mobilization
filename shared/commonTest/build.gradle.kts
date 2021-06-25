@@ -14,6 +14,6 @@ dependencies {
 
     api(libs.kotlin.coroutines.core)
 
-    testImplementation(libs.kotlin.test.junit)
-    testImplementation(libs.kotlin.coroutines.test)
+    implementation(libs.kotlin.test.junit)
+    implementation(libs.kotlin.coroutines.test)
 }
