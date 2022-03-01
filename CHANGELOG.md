@@ -14,6 +14,9 @@ Types of changes:
 
 ## [Unreleased]
 
+## Fixed
+- Breadcrumbs activity check on `FragmentActivity` instead of `AppComponentActivity`
+
 ## [0.3.0]
 ### Added
 - Breadcrumbs class was added into the [Logging](./logging) module. Tracks the most important lifecycle events and posts them to Timber.
