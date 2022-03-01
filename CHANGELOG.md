@@ -14,6 +14,13 @@ Types of changes:
 
 ## [Unreleased]
 
+## Updated
+- Dependencies: SDK version 31
+- Dependencies: Kotlin version 1.6.10 compatibility 
+- Dependencies: Gradle Wrapper 7.4
+- Dependencies: AGP to 7.1.1
+
+
 ## [0.3.0]
 ### Added
 - Breadcrumbs class was added into the [Logging](./logging) module. Tracks the most important lifecycle events and posts them to Timber.
