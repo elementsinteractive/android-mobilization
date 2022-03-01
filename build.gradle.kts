@@ -10,18 +10,18 @@ buildscript {
     dependencies {
         classpath("com.android.tools.build:gradle:7.1.0")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.10")
-        classpath("com.vanniktech:gradle-maven-publish-plugin:0.18.0")
+        classpath("com.vanniktech:gradle-maven-publish-plugin:0.19.0")
     }
 }
 
 plugins {
     id("org.jetbrains.dokka") version "1.4.32"
 
-    id("com.diffplug.spotless") version "6.2.1"
+    id("com.diffplug.spotless") version "6.3.0"
     id("io.gitlab.arturbosch.detekt") version "1.17.1"
 
     id("com.vanniktech.android.junit.jacoco") version "0.16.0"
-    id("com.vanniktech.maven.publish") version "0.18.0" apply false
+    id("com.vanniktech.maven.publish") version "0.19.0" apply false
 }
 
 repositories {
