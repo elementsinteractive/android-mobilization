@@ -14,6 +14,12 @@ Types of changes:
 
 ## [Unreleased]
 
+## Updated
+- Dependencies: SDK version 31
+- Dependencies: Kotlin version 1.6.10 compatibility 
+- Dependencies: Gradle Wrapper 7.4
+- Dependencies: AGP to 7.1.1
+
 ## Fixed
 - Breadcrumbs activity check on `FragmentActivity` instead of `AppComponentActivity`
 
