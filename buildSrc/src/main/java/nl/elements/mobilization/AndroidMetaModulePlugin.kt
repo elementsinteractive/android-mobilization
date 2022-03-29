@@ -3,6 +3,7 @@ package nl.elements.mobilization
 import BuildConfig
 import com.android.build.gradle.AppPlugin
 import com.android.build.gradle.LibraryPlugin
+import com.android.build.gradle.LibraryExtension
 import org.gradle.api.JavaVersion
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -21,46 +22,33 @@ class AndroidMetaModulePlugin : Plugin<Project> {
                     }
                 }
 
-                if (this is AppPlugin || this is LibraryPlugin) {
+                if (this is LibraryPlugin) {
                     android.apply {
-                        compileSdkVersion(BuildConfig.compileSdk)
+                        compileSdk = BuildConfig.compileSdk
 
                         defaultConfig {
                             minSdk = BuildConfig.minSdk
                             targetSdk = BuildConfig.targetSdk
                         }
 
-                        lintOptions {
+                        lint {
                             textReport = true
-                            textOutput("stdout")
 
-                            isCheckReleaseBuilds = false
-                            isCheckAllWarnings = true
+                            // Disable lintVital. Not needed since lint is run on CI
+                            checkReleaseBuilds = false
+                            checkAllWarnings = true
+                            checkDependencies = false
+                            ignoreTestSources = true
+
                             htmlReport = true
                             htmlOutput = file("build/reports/lint-report.html")
 
-                            // Disable lintVital. Not needed since lint is run on CI
-                            isCheckReleaseBuilds = false
-                            // Allow lint to check dependencies
-                            isCheckDependencies = false
-                            // Ignore any tests
-                            isIgnoreTestSources = true
-
-                            disable("GradleCompatible")
+                            disable += "GradleCompatible"
                         }
 
                         compileOptions {
                             sourceCompatibility = JavaVersion.VERSION_1_8
                             targetCompatibility = JavaVersion.VERSION_1_8
-                        }
-
-                        sourceSets {
-                            getByName("main").java.apply {
-                                setSrcDirs(srcDirs + file("src/main/kotlin"))
-                            }
-                            getByName("test").java.apply {
-                                setSrcDirs(srcDirs + file("src/test/kotlin"))
-                            }
                         }
                     }
                 }

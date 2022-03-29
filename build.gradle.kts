@@ -8,8 +8,8 @@ buildscript {
     }
 
     dependencies {
-        classpath("com.android.tools.build:gradle:7.0.0-beta03")
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.20")
+        classpath("com.android.tools.build:gradle:7.1.0")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.10")
         classpath("com.vanniktech:gradle-maven-publish-plugin:0.19.0")
     }
 }
@@ -53,7 +53,8 @@ subprojects {
         input = files("$projectDir/src")
         config = files("$rootDir/detekt.yml")
 
-        failFast = true
+        allRules = true
+        buildUponDefaultConfig = true
         autoCorrect = false
     }
 }
