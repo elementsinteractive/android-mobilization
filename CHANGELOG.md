@@ -20,6 +20,8 @@ Types of changes:
 - Dependencies: Gradle Wrapper 7.4
 - Dependencies: AGP to 7.1.1
 
+## Fixed
+- Breadcrumbs activity check on `FragmentActivity` instead of `AppComponentActivity`
 
 ## [0.3.0]
 ### Added

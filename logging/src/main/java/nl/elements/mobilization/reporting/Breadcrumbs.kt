@@ -10,8 +10,8 @@ import android.app.Activity
 import android.app.Application
 import android.content.Context
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
 import timber.log.Timber.i
 
@@ -38,7 +38,7 @@ class Breadcrumbs : Application.ActivityLifecycleCallbacks, FragmentManager.Frag
     override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
         log(">> onCreate", activity)
 
-        if (activity is AppCompatActivity) {
+        if (activity is FragmentActivity) {
             activity.supportFragmentManager.registerFragmentLifecycleCallbacks(this, true)
         }
     }

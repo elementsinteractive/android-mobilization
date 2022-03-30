@@ -9,9 +9,15 @@ package nl.elements.mobilization.reporting
 import android.app.Activity
 import android.os.Bundle
 import android.util.Log
+import androidx.activity.ComponentActivity
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
+import io.mockk.Called
+import io.mockk.confirmVerified
+import io.mockk.every
 import io.mockk.mockk
+import io.mockk.verify
 import org.junit.Assert.assertNull
 import org.junit.Before
 import org.junit.Test
@@ -72,6 +78,37 @@ class BreadcrumbsTest {
         // Then
         val expectedMessage = log("<< onDestroy", activity)
         assertEquals(expectedMessage, message)
+    }
+
+    @Test
+    fun `onActivityCreated - when called with FragmentActivity - registers fragment lifecycle callbacks`() {
+        // Given [activity]
+        val activity: FragmentActivity = mockk()
+        every { activity.supportFragmentManager.registerFragmentLifecycleCallbacks(any(), true) } returns Unit
+
+        // When
+        breadcrumbs.onActivityCreated(activity, null)
+
+        // Then
+        verify {
+            activity.supportFragmentManager.registerFragmentLifecycleCallbacks(any(), true)
+        }
+
+        confirmVerified(activity)
+    }
+
+    @Test
+    fun `onActivityCreated - when called with ComponentActivity - does not register fragment lifecycle callbacks`() {
+        // Given [activity]
+        val activity: ComponentActivity = mockk()
+
+        // When
+        breadcrumbs.onActivityCreated(activity, null)
+
+        // Then
+        verify {
+            activity wasNot Called
+        }
     }
 
     @Test
