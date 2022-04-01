@@ -21,7 +21,7 @@ jobs:
           java-version: 11
 
       - name: Upload release to Maven Central
-        run: ./gradlew uploadArchives --no-daemon --no-parallel --stacktrace
+        run: ./gradlew publishAllPublicationsToMavenCentralRepository --no-daemon --no-parallel --stacktrace
         env:
           ORG_GRADLE_PROJECT_SONATYPE_NEXUS_USERNAME: ${{ secrets.SONATYPE_NEXUS_USERNAME }}
           ORG_GRADLE_PROJECT_SONATYPE_NEXUS_PASSWORD: ${{ secrets.SONATYPE_NEXUS_PASSWORD }}
