@@ -14,16 +14,17 @@ Types of changes:
 
 ## [Unreleased]
 
-## Updated
+## [0.4.0] - 2022-03-30
+### Updated
 - Dependencies: SDK version 31
 - Dependencies: Kotlin version 1.6.10 compatibility 
 - Dependencies: Gradle Wrapper 7.4
-- Dependencies: AGP to 7.1.1
+- Dependencies: AGP to 7.1.2
 
-## Fixed
+### Fixed
 - Breadcrumbs activity check on `FragmentActivity` instead of `AppComponentActivity`
 
-## [0.3.0]
+## [0.3.0] - 2021-02-05
 ### Added
 - Breadcrumbs class was added into the [Logging](./logging) module. Tracks the most important lifecycle events and posts them to Timber.
 
