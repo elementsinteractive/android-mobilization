@@ -15,7 +15,7 @@ buildscript {
 }
 
 plugins {
-    id("org.jetbrains.dokka") version "1.6.21"
+    id("org.jetbrains.dokka") version "1.7.0"
 
     id("com.diffplug.spotless") version "6.6.0"
     id("io.gitlab.arturbosch.detekt") version "1.17.1"
