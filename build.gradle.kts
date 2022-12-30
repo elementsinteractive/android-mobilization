@@ -21,7 +21,7 @@ plugins {
     id("io.gitlab.arturbosch.detekt") version "1.17.1"
 
     id("com.vanniktech.android.junit.jacoco") version "0.16.0"
-    id("com.vanniktech.maven.publish") version "0.20.0" apply false
+    id("com.vanniktech.maven.publish") version "0.23.0" apply false
 }
 
 repositories {
